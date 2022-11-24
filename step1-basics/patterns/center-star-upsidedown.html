@@ -9,26 +9,27 @@
     <script>
         function printTriangle() {
 
-            //     *
-            //    ***  
-            //   *****
-            //  *******
             // *********
+            //  *******
+            //   *****
+            //    ***
+            //     *
+
             let number = document.getElementById("num").value;
             number = parseInt(number);
-            let finalcount = number * 2 - 1;
             let string = '';
-            for (let i = 1; i <= finalcount; i = i + 2) {
-                let spacecount = finalcount - i;
-                let equalspace = spacecount / 2;
-                for (let j = 1; j < equalspace; j++) {
-                    string += ' ';
+            let finallength = number * 2 - 1;
+            for (let i = finallength; i >= 1; i = i - 2) {
+                let spacecount = finallength - i;
+                let evenspace = spacecount / 2;
+                for (let j = 1; j <= evenspace; j++) {
+                    string += " ";
                 }
-                for (let j = 1; j <= i; j++) {
+                for (let j = i; j >= 1; j--) {
                     string += '*';
                 }
-                for (let j = 1; j < equalspace; j++) {
-                    string += ' ';
+                for (let j = 1; j <= evenspace; j++) {
+                    string += " ";
                 }
                 string += "\n";
             }
