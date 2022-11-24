@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Number to be taken <input type="number" id="number">
+    <button type="submit" onclick="printTable()">Submit</button>
+    Number Series in Reverse Order <input type="text" id="ns">
+
+    <script>
+        function printTable() {
+            let number = document.getElementById("number").value;
+            let num = parseInt(number);
+
+            let i = 10;
+            let resultString = '';
+            while (i > 0) {
+                let result = num * i;
+                resultString += result.toString() + " ";
+                i--;
+            }
+
+            document.getElementById("ns").value = resultString;
+        }
+    </script>
+</body>
+
+</html>

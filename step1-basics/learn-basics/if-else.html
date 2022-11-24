@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    n<input type="text" id="n_value">
+    m<input type="text" id="m_value">
+    <button type="submit" name="value" onclick=compareNM()>submit</button>
+    Result<input type="text" id="result">
+
+    <script>
+
+        function compareNM() {
+            let m_value = document.getElementById("m_value").value;
+            let n_value = document.getElementById("n_value").value;
+            let m = parseInt(m_value);
+            let n = parseInt(n_value);
+            console.log(n, m);
+
+            if ((n >= 0 || n < 0) && (m >= 0 || m < 0)) {
+
+                console.log("in number");
+                if (n === m) {
+                    console.log("equal");
+                    document.getElementById("result").value = 'equal';
+                } else if (n > m) {
+                    console.log("n>m");
+                    document.getElementById("result").value = 'greater';
+                } else {
+                    console.log("n<m");
+                    document.getElementById("result").value = 'lesser';
+                }
+
+            } else {
+
+                console.log("in string");
+                let m = m_value;
+                let n = n_value;
+                if (n === m) {
+                    console.log("equal");
+                    document.getElementById("result").value = 'equal';
+                } else if (n > m) {
+                    console.log("n>m");
+                    document.getElementById("result").value = 'greater';
+                } else {
+                    console.log("n<m");
+                    document.getElementById("result").value = 'lesser';
+                }
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>

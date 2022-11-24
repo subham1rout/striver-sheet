@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Given Integer <input type="text" id="givenint">
+    <button type="submit" onclick="printTriangle()">Submit</button>
+    Pattern is <textarea type="text" id="pattern"></textarea>
+
+    <script>
+        function printTriangle() {
+            let number = document.getElementById("givenint").value;
+            number = parseInt(number);
+            console.log("number", number);
+
+            let resultString = '';
+            for (let i = number; i > 0; i--) {
+                for (let j = 1; j < i + 1; j++) {
+                    console.log("i=", i, "j=", j);
+                    resultString += "* ";
+                }
+                resultString += "\n";
+            }
+            console.log(resultString);
+            document.getElementById("pattern").value = resultString
+        }
+    </script>
+</body>
+
+</html>

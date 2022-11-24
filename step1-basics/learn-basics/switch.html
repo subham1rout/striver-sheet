@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    choice <input type="text" id="choice">
+    list <input type="text" id="list">
+    <button type="submit" onclick="switchCase()">Submit</button>
+    Area of Circle or Rectangle = <input type="text" id="area">
+
+    <script>
+
+        function switchCase() {
+            let choice = document.getElementById("choice").value;
+            let list = document.getElementById("list").value;
+
+            let ch = parseInt(choice);
+
+            if (ch === 1) {
+
+                console.log("PI value=", Math.PI);
+
+                let listArr = parseFloat(list);
+                let area = Math.PI * listArr * listArr;
+                console.log("area=", area);
+                document.getElementById("area").value = area;
+
+            } else if (ch === 2) {
+
+                let listArr = list.split(",");
+                let length = parseFloat(listArr[0]);
+                let breath = parseFloat(listArr[1]);
+
+                let area = length * breath;
+
+                console.log("area=", area);
+
+                document.getElementById("area").value = area;
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>
+
+
+<!-- //case 1
+// let choice = 1;
+// let list = [5];
+
+//case 2
+let choice = 2;
+let list = [5,10];
+
+function switchcase(choice, list) {
+    switch (choice) {
+        case 1:
+            console.log((22 / 7) * list[0] * list[0]);
+            break;
+        case 2:
+            console.log(list[0] * list[1]);
+    }
+}
+
+switchcase(choice, list); -->
