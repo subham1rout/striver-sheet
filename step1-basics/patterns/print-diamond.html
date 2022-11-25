@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Enter a number: <input type="number" id="num">
+    <button type="submit" onclick="printDiamond()">Submit</button>
+    Result: <textarea id="result" cols="20" rows="10"></textarea>
+    <script>
+        function printDiamond() {
+            //     *
+            //    ***  
+            //   *****
+            //  *******
+            // *********
+            // *********
+            //  *******
+            //   *****
+            //    ***
+            //     *
+
+            let number = parseInt(document.getElementById("num").value);
+            let finallength = number * 2 - 1;
+            let resString = '';
+            for (let i = 1; i <= finallength; i += 2) {
+                let spacecount = (finallength - i) / 2;
+                for (let j = 1; j <= spacecount; j++) {
+                    resString += " ";
+                }
+                for (let j = 1; j <= i; j++) {
+                    resString += "*";
+                }
+                for (let j = 1; j <= spacecount; j++) {
+                    resString += " ";
+                }
+                resString += '\n';
+            }
+            for (let i = finallength; i >= 1; i = i - 2) {
+                let spacecount = (finallength - i) / 2;
+                for (let j = 1; j <= spacecount; j++) {
+                    resString += " ";
+                }
+                for (let j = i; j >= 1; j--) {
+                    resString += "*";
+                }
+                for (let j = 1; j <= spacecount; j++) {
+                    resString += " ";
+                }
+                resString += '\n';
+            }
+            console.log(resString);
+            document.getElementById("result").value = resString;
+
+        }
+    </script>
+</body>
+
+</html>
