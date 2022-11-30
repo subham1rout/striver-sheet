@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Number:<input type="number" id="num">
+    <button type="submit" onclick="printTriangle()">Submit</button>
+    <textarea id="result" cols="30" rows="10"></textarea>
+    <script>
+        function printTriangle() {
+            // * 
+            // * * 
+            // * * * 
+            // * * * * 
+            // * * * * *
+            // * * * *
+            // * * *
+            // * *
+            // *
+
+            let number = parseInt(document.getElementById("num").value);
+            let string = '';
+            for (let i = 1; i <= number * 2 - 1; i++) {
+                if (i <= number) {
+                    for (let j = 1; j <= i; j++) {
+                        string += '*';
+                    }
+                    string += '\n';
+                } else {
+                    for (let j = 1; j <= number * 2 - i; j++) {
+                        string += '*';
+                    }
+                    string += '\n';
+                }
+            }
+            console.log(string);
+            document.getElementById("result").value = string;
+        }
+    </script>
+</body>
+
+</html>
