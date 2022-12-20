@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Number: <input type="text" id="num">
+    <button type="submit" onclick="printBinary()">Submit</button>
+    <textarea id="result" cols="30" rows="10"></textarea>
+    <script>
+        function printBinary() {
+            // 1 
+            // 0 1 
+            // 1 0 1
+            // 0 1 0 1 
+            // 1 0 1 0 1
+
+            let string = '';
+            let num = parseInt(document.getElementById("num").value);
+            for (let i = 1; i <= num; i++) {
+                for (let j = 0; j < i; j++) {
+                    string += ((i + j) % 2) + " ";
+                }
+                string += '\n';
+            }
+            console.log(string);
+            document.getElementById("result").value = string;
+        }
+    </script>
+</body>
+
+</html>
