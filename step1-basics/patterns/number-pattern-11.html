@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Number: <input type="text" id="num">
+    <button type="submit" onclick="printNumberPattern()">Submit</button>
+    <textarea id="result" cols="30" rows="10"></textarea>
+    <script>
+        function printNumberPattern() {
+
+            // 1                 1
+            // 1 2             2 1
+            // 1 2 3         3 2 1
+            // 1 2 3 4     4 3 2 1
+            // 1 2 3 4 5 5 4 3 2 1
+
+            let string = '';
+            let number = parseInt(document.getElementById("num").value);
+            for (let i = 1; i <= number; i++) {
+                for (let j = 1; j <= i; j++) {
+                    string += j;
+                }
+                for (let j = 1; j <= (number * 2 - i * 2); j++) {
+                    string += ' ';
+                }
+                for (let j = i; j >= 1; j--) {
+                    string += j;
+                }
+                string += '\n';
+            }
+
+            console.log(string);
+            document.getElementById("result").value = string;
+        }
+    </script>
+</body>
+
+</html>
