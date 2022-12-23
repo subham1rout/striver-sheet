@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Number:<input type="text" id="num">
+    <button type="submit" onclick="printTringle()">Submit</button>
+    <textarea id="result" cols="30" rows="10"></textarea>
+    <script>
+        function printTringle() {
+            // 1 
+            // 2 3 
+            // 4 5 6 
+            // 7 8 9 10 
+            // 11 12 13 14 15
+
+            let string = '';
+            let number = parseInt(document.getElementById("num").value);
+            let count = 1;
+            for (let i = 1; i <= number; i++) {
+                for (let j = 1; j <= i; j++) {
+                    string += count + ' ';
+                    count++;
+                }
+                string += '\n';
+            }
+            console.log(string);
+            document.getElementById("result").value = string;
+        }
+    </script>
+</body>
+
+</html>
