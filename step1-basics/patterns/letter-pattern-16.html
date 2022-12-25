@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Number: <input type="text" id="number">
+    <button type="submit" onclick="printAlphabet()">Submit</button>
+    <textarea id="result" cols="30" rows="10"></textarea>
+    <script>
+        function printAlphabet() {
+            //    A
+            //   ABA
+            //  ABCBA
+            // ABCDCBA
+
+
+            let string = '';
+            let num = parseInt(document.getElementById("number").value);
+            for (let i = 1; i <= num; i++) {
+                for (let k = 1; k <= num - i; k++) {
+                    string += ' ';
+                }
+                for (let k = 1; k <= i; k++) {
+                    string += String.fromCharCode(64 + k);
+                }
+                for (let k = i - 1; k >= 1; k--) {
+                    string += String.fromCharCode(64 + k);
+                }
+                for (let k = 1; k <= num - i; k++) {
+                    string += ' ';
+                }
+                string += '\n';
+            }
+            console.log(string);
+            document.getElementById("result").value = string;
+        }
+    </script>
+</body>
+
+</html>
