@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Number: <input type="text" id="number">
+    <button type="submit" onclick="printAlphabet()">Submit</button>
+    <button type="submit" onclick="myPattern()">Get</button>
+    <textarea id="result" cols="30" rows="10"></textarea>
+    <textarea id="result1" cols="30" rows="10"></textarea>
+    <script>
+        function printAlphabet() {
+            // E
+            // E D
+            // E D C
+            // E D C B
+            // E D C B A
+
+
+            let string = '';
+            let num = parseInt(document.getElementById("number").value);
+            for (let i = 0; i < num; i++) {
+                for (let j = 0; j <= i; j++) {
+                    string += String.fromCharCode((64 + num) - j);
+                }
+                string += '\n';
+            }
+            console.log(string);
+            document.getElementById("result").value = string;
+
+        }
+
+        function myPattern() {
+            // E
+            // D E
+            // C D E
+            // B C D E
+            // A B C D E
+
+            let string = '';
+            let num = parseInt(document.getElementById("number").value);
+            for (let i = 0; i < num; i++) {
+                for (let j = i; j >= 0; j--) {
+                    string += String.fromCharCode((64 + num) - j);
+                }
+                string += '\n';
+            }
+            console.log(string);
+            document.getElementById("result1").value = string;
+        }
+    </script>
+</body>
+
+</html>

@@ -7,26 +7,17 @@
     <textarea id="result" cols="30" rows="10"></textarea>
     <script>
         function printAlphabet() {
-            //    A
-            //   ABA
-            //  ABCBA
-            // ABCDCBA
-
+            // A
+            // BB
+            // CCC
+            // DDDD
+            // EEEEE
 
             let string = '';
             let num = parseInt(document.getElementById("number").value);
-            for (let i = 1; i <= num; i++) {
-                for (let k = 1; k <= num - i; k++) {
-                    string += ' ';
-                }
-                for (let k = 1; k <= i; k++) {
-                    string += String.fromCharCode(64 + k);
-                }
-                for (let k = i - 1; k >= 1; k--) {
-                    string += String.fromCharCode(64 + k);
-                }
-                for (let k = 1; k <= num - i; k++) {
-                    string += ' ';
+            for (let i = 0; i < num; i++) {
+                for (let j = 0; j <= i; j++) {
+                    string += String.fromCharCode(65 + i);
                 }
                 string += '\n';
             }
