@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Number: <input type="text" id="num">
+    <button type="submit" onclick="starPattern()">Submit</button>
+    <textarea id="result" cols="30" rows="10"></textarea>
+    <script>
+        function starPattern() {
+            // ****
+            // *  *
+            // *  *
+            // ****
+            let string = '';
+            let number = parseInt(document.getElementById("num").value);
+            for (let i = 1; i <= number; i++) {
+                if (i == 1 || i == number) {
+                    for (let j = 1; j <= number; j++) {
+                        string += "*";
+                    }
+                    string += "\n";
+                } else {
+                    string += "*";
+                    for (let j = 1; j <= number - 2; j++) {
+                        string += ' ';
+                    }
+                    string += '*';
+                    string += '\n';
+                }
+            }
+            console.log(string);
+            document.getElementById("result").value = string;
+        }
+    </script>
+</body>
+
+</html>

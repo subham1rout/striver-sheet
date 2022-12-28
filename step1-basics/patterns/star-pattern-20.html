@@ -7,40 +7,39 @@
     <textarea id="result" cols="30" rows="10"></textarea>
     <script>
         function starPattern() {
-            // **********
-            // ****  ****
-            // ***    ***
-            // **      **
-            // *        *
             // *        *
             // **      **
             // ***    ***
             // ****  ****
             // **********
+            // ****  ****
+            // ***    ***
+            // **      **
+            // *        *
             let string = '';
             let number = parseInt(document.getElementById("num").value);
-            for (let i = 0; i < number * 2; i++) {
-                if (i >= 0 && i <= number - 1) {
+            for (let i = 1; i <= number * 2 - 1; i++) {
+                if (i >= 1 && i <= number) {
 
-                    for (let j = number - i; j > 0; j--) {
+                    for (let j = 1; j <= i; j++) {
                         string += '*';
                     }
-                    for (let j = 0; j < i * 2; j++) {
+                    for (let j = 1; j <= number * 2 - i * 2; j++) {
                         string += ' ';
                     }
-                    for (let j = number - i; j > 0; j--) {
+                    for (let j = 1; j <= i; j++) {
                         string += '*';
                     }
 
                 } else {
 
-                    for (let j = 0; j <= i - number; j++) {
+                    for (let j = number * 2 - i; j >= 1; j--) {
                         string += '*';
                     }
-                    for (let j = 0; j < number * 2 - 2 * (i - number + 1); j++) {
-                        string += " ";
+                    for (let j = 1; j <= (i - number) * 2; j++) {
+                        string += ' ';
                     }
-                    for (let j = 0; j <= i - number; j++) {
+                    for (let j = number * 2 - i; j >= 1; j--) {
                         string += '*';
                     }
 
