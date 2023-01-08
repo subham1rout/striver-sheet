@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Number: <input type="text" id="num">
+    <button type="submit" onclick="numberPattern()">Submit</button>
+    <textarea id="result" cols="30" rows="10"></textarea>
+    <script>
+
+        function min(a, b) {
+            a > b ? b : a;
+        }
+
+        function numberPattern() {
+
+            // 4 4 4 4 4 4 4
+            // 4 3 3 3 3 3 4
+            // 4 3 2 2 2 3 4
+            // 4 3 2 1 2 3 4
+            // 4 3 2 2 2 3 4
+            // 4 3 3 3 3 3 4
+            // 4 4 4 4 4 4 4
+
+            let string = '';
+            let number = parseInt(document.getElementById("num").value);
+            console.log(number);
+
+            for (let i = 0; i < 2 * number - 1; i++) {
+                for (let j = 0; j < 2 * number - 1; j++) {
+
+                    let top = i;
+                    let bottom = 2 * number - 2 - i;
+                    let left = j;
+                    let right = 2 * number - 2 - j;
+
+                    let x = top > bottom ? bottom : top;
+                    let y = left > right ? right : left;
+                    let z = x > y ? y : x;
+                    string += number - z;
+                }
+                string += '\n';
+            }
+
+            console.log(string);
+            document.getElementById("result").value = string;
+        }
+    </script>
+</body>
+
+</html>
