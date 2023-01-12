@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Enter a number: <input type="text" id="num">
+    <button type="submit" onclick="countDigit()">Submit</button>
+    Count Digit: <textarea id="result" cols="5" rows="1"></textarea>
+
+    <script>
+        function countDigit() {
+            let num = Number.parseInt(document.getElementById("num").value);
+            let count = 0;
+            let dividend = num;
+            while (dividend !== 0) {
+                dividend = Math.floor(dividend / 10);
+                count++;
+            }
+            console.log("Count of digit=", count);
+            document.getElementById("result").value = count;
+        }
+    </script>
+</body>
+
+</html>
