@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Enter a number : <input type="text" id="num">
+    <button type="submit" onclick="revNum()">Submit</button>
+    Reverse number: <textarea id="result" cols="10" rows="1"></textarea>
+    <script>
+        function revNum() {
+            let number = Number.parseInt(document.getElementById("num").value);
+            console.log("Number is ", number);
+            let dividend = number;
+            let revNum = 0;
+            while (dividend != 0) {
+                let remainder = dividend % 10;
+                revNum = revNum * 10 + remainder;
+                dividend = Math.floor(dividend / 10);
+            }
+            console.log("Reverese number is ", revNum);
+            document.getElementById("result").value = revNum;
+        }
+    </script>
+</body>
+
+</html>
