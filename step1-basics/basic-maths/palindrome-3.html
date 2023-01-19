@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <input type="text" id="number">
+    <button type="submit" onclick="checkPalindrome()">Submit</button>
+    <textarea id="result" cols="10" rows="1"></textarea>
+    <script>
+        function checkPalindrome() {
+            let number = Number.parseInt(document.getElementById("number").value);
+            let dividend = number;
+            let matchnumber = 0;
+            let answer;
+            while (dividend != 0) {
+                let remainder = dividend % 10;
+                matchnumber = matchnumber * 10 + remainder;
+                dividend = Math.floor(dividend / 10);
+            }
+            if (number === matchnumber) {
+                answer = "Yes";
+                console.log("Yes, It is a palindrome!!");
+            } else {
+                answer = "No";
+                console.log("No, It's not a palindrome!!");
+            }
+            document.getElementById("result").value = answer;
+        }
+    </script>
+</body>
+
+</html>
