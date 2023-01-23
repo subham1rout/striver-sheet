@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Enter 2 numbers: <input type="text" id="num1"> <input type="text" id="num2">
+    <button type="submit" onclick="checkGCDAndLCM()">Submit</button>
+    GCD of these numbers: <textarea id="gcd" cols="10" rows="1"></textarea>
+    LCM of these numbers: <textarea id="lcm" cols="10" rows="1"></textarea>
+    <script>
+        function checkGCDAndLCM() {
+            let num1 = parseInt(document.getElementById("num1").value);
+            let num2 = parseInt(document.getElementById("num2").value);
+            let result = new Array();
+            // gcd logic
+            let gcd;
+            for (let i = 1; i <= num1 && i <= num2; i++) {
+                if (num1 % i === 0 && num2 % i === 0) {
+                    gcd = i;
+                }
+            }
+            result.push(gcd);
+            document.getElementById("gcd").value = gcd;
+            //lcm logic
+            let lcm;
+            let max = num1 > num2 ? num1 : num2;
+            while (true) {
+                if (max % num1 === 0 && max % num2 === 0) {
+                    lcm = max;
+                    break;
+                } else {
+                    max++;
+                }
+            }
+            result.push(lcm);
+            document.getElementById("lcm").value = lcm;
+            console.log("GCD and LCM of these numbers are ", result);
+            
+        }
+    </script>
+</body>
+
+</html>
