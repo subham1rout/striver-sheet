@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Enter a number: <input type="text" id="number">
+    <button type="submit" onclick="isArmstrong()">Submit</button>
+    <textarea id="result" cols="50" rows="1"></textarea>
+
+    <script>
+        function isArmstrong() {
+            let number = Number.parseInt(document.getElementById("number").value);
+            let dividend = number;
+            let arr = [];
+            while (dividend !== 0) {
+                arr.push(dividend % 10);
+                dividend = Math.floor(dividend / 10);
+            }
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += Math.pow(arr[i], arr.length);
+            }
+            if (sum === number) {
+                document.getElementById("result").value = "armstrong number";
+            } else {
+                document.getElementById("result").value = "not a armstrong number";
+            }
+        }
+    </script>
+</body>
+
+</html>
