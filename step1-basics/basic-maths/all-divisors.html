@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Enter a number: <input type="text" id="number">
+    <button type="submit" onclick="printAllDivisors()">Submit</button>
+    All Divisors: <textarea id="result" cols="30" rows="1"></textarea>
+    <script>
+        function printAllDivisors() {
+            let number = Number.parseInt(document.getElementById("number").value);
+            let string = '';
+            for (let i = 1; i <= number; i++) {
+                if (number % i === 0) {
+                    string = string + i + " ";
+                }
+            }
+            console.log(string);
+            document.getElementById("result").value = string;
+        }
+    </script>
+</body>
+
+</html>
