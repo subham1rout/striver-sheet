@@ -5,10 +5,13 @@
     Enter a number : <input type="text" id="num">
     <button type="submit" onclick="revNum()">Submit</button>
     Reverse number: <textarea id="result" cols="10" rows="1"></textarea>
+    Reverse number after reversing it's bit : <textarea id="result2" cols="10" rows="1"></textarea>
     <script>
         function revNum() {
             let number = Number.parseInt(document.getElementById("num").value);
             console.log("Number is ", number);
+
+            //leetcode solution
             let dividend = Math.abs(number);
             let revNum = 0;
             while (dividend > 0) {
@@ -25,6 +28,20 @@
                 console.log("Reverese number is ", Math.sign(number) * revNum);
                 document.getElementById("result").value = Math.sign(number) * revNum;
             }
+
+            //gfg solution
+            let binarynumber = number.toString(2);
+            let length = 32 - binarynumber.length;
+            let string = '';
+            for (let i = 0; i < length; i++) {
+                string += '0';
+            }
+            string += binarynumber.toString();
+            let arr = string.toString(2).split("").reverse().join("");
+            // let arr = string.split("").map((el) => { return (el == 1) ? 0 : 1 }).join(''); for reversing bits
+            let decimal = Number.parseInt(arr, 2);
+            console.log("Reverse number after reversing it's binary decimal ", decimal);
+            document.getElementById("result2").value = decimal;
         }
     </script>
 </body>
