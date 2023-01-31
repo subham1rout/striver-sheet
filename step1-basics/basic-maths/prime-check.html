@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Enter a number: <input type="text" id="number">
+    <button type="submit" onclick="checkPrime()">Submit</button>
+    <textarea id="result" cols="30" rows="1"></textarea>
+    <script>
+        function checkPrime() {
+            let number = parseInt(document.getElementById("number").value);
+            let string = '';
+            if (number === 1) {
+                string = 'not a prime number';
+            }
+            for (let i = 2; i < number; i++) {
+                if (number % i === 0) {
+                    string = 'not a prime number';
+                    break;
+                }
+                string = 'a prime number';
+            }
+            console.log(`${number} is ${string}`);
+            document.getElementById('result').value = string;
+        }
+    </script>
+</body>
+
+</html>
