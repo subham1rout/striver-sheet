@@ -10,31 +10,66 @@
         function checkGCDAndLCM() {
             let num1 = parseInt(document.getElementById("num1").value);
             let num2 = parseInt(document.getElementById("num2").value);
+            let a = num1; b = num2;
             let result = new Array();
-            // gcd logic
+
+            //euclidean algorithm
             let gcd;
-            for (let i = 1; i <= num1 && i <= num2; i++) {
-                if (num1 % i === 0 && num2 % i === 0) {
-                    gcd = i;
-                }
+            while (a > 0 && b > 0) {
+                if (a > b) a = Math.floor(a % b);
+                else b = Math.floor(b % a);
             }
+            if (a === 0) gcd = b;
+            else gcd = a;
+
+            // gcd logic-1
+            // let gcd;
+            // let minNo = Math.min(num1, num2);
+            // for (let i = 1; i <= minNo; i++) {
+            //     if (num1 % i === 0 && num2 % i === 0) {
+            //         gcd = i;
+            //     }
+            // }
+
+            // gcd logic-2
+            // for (let i = minNo; i >= 1; i--) {
+            //     if (num1 % i === 0 && num2 % i === 0) {
+            //         gcd = i;
+            //         break;
+            //     }
+            // }
             result.push(gcd);
             document.getElementById("gcd").value = gcd;
-            //lcm logic
-            let lcm;
-            let max = num1 > num2 ? num1 : num2;
-            while (true) {
-                if (max % num1 === 0 && max % num2 === 0) {
-                    lcm = max;
-                    break;
-                } else {
-                    max++;
-                }
+
+            //lcm new logic-2
+            let max = Math.max(num1, num2);
+            let min = Math.min(num1, num2);
+            let lcm = max;
+            while (lcm % min !== 0) {
+                lcm += max;
             }
+
+            //lcm logic-1
+            // let lcm;
+            // let max = num1 > num2 ? num1 : num2;
+            // while (true) {
+            //     if (max % num1 === 0 && max % num2 === 0) {
+            //         lcm = max;
+            //         break;
+            //     } else {
+            //         max++;
+            //     }
+            // }
+
+            //gcd new logic-3
+            // let gcd = num1 * num2 / lcm;
+            // result.push(gcd);
+            // document.getElementById("gcd").value = gcd;
+
             result.push(lcm);
             document.getElementById("lcm").value = lcm;
             console.log("GCD and LCM of these numbers are ", result);
-            
+
         }
     </script>
 </body>
