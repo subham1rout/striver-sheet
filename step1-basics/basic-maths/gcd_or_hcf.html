@@ -10,17 +10,7 @@
         function checkGCDAndLCM() {
             let num1 = parseInt(document.getElementById("num1").value);
             let num2 = parseInt(document.getElementById("num2").value);
-            let a = num1; b = num2;
             let result = new Array();
-
-            //euclidean algorithm
-            let gcd;
-            while (a > 0 && b > 0) {
-                if (a > b) a = Math.floor(a % b);
-                else b = Math.floor(b % a);
-            }
-            if (a === 0) gcd = b;
-            else gcd = a;
 
             // gcd logic-1
             // let gcd;
@@ -38,16 +28,24 @@
             //         break;
             //     }
             // }
+
+            //gcd new logic-3
+            // let gcd = num1 * num2 / lcm;
+            // result.push(gcd);
+            // document.getElementById("gcd").value = gcd;
+
+            //euclidean algorithm gcd logic-4
+            let gcd;
+            let a = num1; b = num2;
+            while (a > 0 && b > 0) {
+                if (a > b) a = Math.floor(a % b);
+                else b = Math.floor(b % a);
+            }
+            if (a === 0) gcd = b;
+            else gcd = a;
+
             result.push(gcd);
             document.getElementById("gcd").value = gcd;
-
-            //lcm new logic-2
-            let max = Math.max(num1, num2);
-            let min = Math.min(num1, num2);
-            let lcm = max;
-            while (lcm % min !== 0) {
-                lcm += max;
-            }
 
             //lcm logic-1
             // let lcm;
@@ -61,13 +59,19 @@
             //     }
             // }
 
-            //gcd new logic-3
-            // let gcd = num1 * num2 / lcm;
-            // result.push(gcd);
-            // document.getElementById("gcd").value = gcd;
+            //lcm new logic-2
+            // let max = Math.max(num1, num2);
+            // let min = Math.min(num1, num2);
+            // let lcm = max;
+            // while (lcm % min !== 0) {
+            //     lcm += max;
+            // }
 
+            //lcm logic-3
+            let lcm = num1 * num2 / gcd;
             result.push(lcm);
             document.getElementById("lcm").value = lcm;
+
             console.log("GCD and LCM of these numbers are ", result);
 
         }
