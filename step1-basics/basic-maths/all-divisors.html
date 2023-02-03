@@ -9,11 +9,28 @@
         function printAllDivisors() {
             let number = Number.parseInt(document.getElementById("number").value);
             let string = '';
-            for (let i = 1; i <= number; i++) {
+
+            // approach-1  time complexity=O(n)
+            // for (let i = 1; i <= number; i++) {
+            //     if (number % i === 0) {
+            //         string = string + i + " ";
+            //     }
+            // }
+
+            //aproach-2 time complexity=O(sqrt(n))
+            let arr = [];
+            // for (let i = 1; i <= Math.floor(Math.sqrt(number)); i++) {
+            for (let i = 1; i * i <= number; i++) {
                 if (number % i === 0) {
-                    string = string + i + " ";
+                    arr.push(i);
+                    if (number / i !== i) {
+                        arr.push(number / i);
+                    }
                 }
             }
+            let sortarr = arr.sort((a, b) => a - b);
+            string = sortarr.join();
+
             console.log(string);
             document.getElementById("result").value = string;
         }
