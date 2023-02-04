@@ -9,6 +9,8 @@
         function checkPrime() {
             let number = parseInt(document.getElementById("number").value);
             let string = '';
+
+            //approach-1 time complexity=O(n)
             if (number === 1) {
                 string = 'not a prime number';
             }
@@ -19,6 +21,23 @@
                 }
                 string = 'a prime number';
             }
+
+            //aproach-2 time complexity=O(sqrt(n))
+            let count = 0;
+            for (let i = 1; i * i < number; i++) {
+                if (number % i === 0) {
+                    count++;
+                    if (number / i != i) {
+                        count++;
+                    }
+                }
+            }
+            if (count == 2) {
+                string = 'a prime number';
+            } else {
+                string = 'not a prime number';
+            }
+
             console.log(`${number} is ${string}`);
             document.getElementById('result').value = string;
         }
