@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Enter no times: <input type="text" id="times">
+    Enter name: <input type="text" id="name">
+    <button type="submit" onclick="printNames()">Submit</button>
+    Result: <textarea id="result" cols="40" rows="1"></textarea>
+    <script>
+
+        function printNames() {
+            let number = parseInt(document.getElementById("times").value);
+            let name = document.getElementById("name").value;
+            let string = '';
+            function printName(name, number) {
+                if (number <= 0) {
+                    return;
+                }
+                string = string + name + ' ';
+                number--;
+                printName(name, number);
+            }
+            printName(name, number);
+            console.log(string);
+            document.getElementById("result").value = string;
+        }
+
+    </script>
+</body>
+
+</html>
