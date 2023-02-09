@@ -1,0 +1,22 @@
+{
+  "name": "striver-sheet",
+  "version": "1.0.0",
+  "description": "Following link - https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subham1rout/striver-sheet.git"
+  },
+  "author": "Subham Rout",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/subham1rout/striver-sheet/issues"
+  },
+  "homepage": "https://github.com/subham1rout/striver-sheet#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}

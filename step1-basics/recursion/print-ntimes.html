@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    Enter a number: <input type="text" id="number">
+    <button type="submit" onclick="printNumbers()">Submit</button>
+    Result: <textarea id="result" cols="50" rows="10"></textarea>
+
+    <script>
+        function printNumbers() {
+            let n = parseInt(document.getElementById("number").value);
+            let string = '';
+            function printHelloWorld(n) {
+                if (n <= 0) {
+                    return;
+                }
+                string += `Hello World!-${n}\n`;
+                printHelloWorld(n - 1);
+            }
+            printHelloWorld(n);
+            console.log(string);
+        }
+    </script>
+</body>
+
+</html>
