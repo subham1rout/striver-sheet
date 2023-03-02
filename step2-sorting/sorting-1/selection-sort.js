@@ -30,4 +30,4 @@ function selectionSort(arr, n) {
     }
 }
 
-//time complexity= O(n*2);
+//time complexity= O(n*2) best case,average case, worst case
