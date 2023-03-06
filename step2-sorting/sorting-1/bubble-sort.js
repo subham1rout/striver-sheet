@@ -33,6 +33,5 @@ function bubbleSort(arr, n) {
     }
 }
 
-//time complexity
-// O(n*2) average case, worst case
-//O(n) best case
+//time complexity= O(n^2) i.e n+ n-1 + n-2 + n-3 + n-4 +......+1=n(n+1)/2 =n^2  (average case, worst case)
+//time complexity= O(n) i.e if in first try swaping not happening just get out of loop (best case)
