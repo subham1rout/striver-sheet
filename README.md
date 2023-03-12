@@ -33,8 +33,4 @@ Step 2.2.1- Merge Sort
 
 Step 2.2.2- Recursive Bubble Sort
 
-Step 2.2.3- Recursive Insertion Sort
-
-Step 2.2.4- Quick Sort
-
 From this repo you find striver sheet all problems solved using javascript language.
