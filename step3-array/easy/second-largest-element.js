@@ -9,7 +9,8 @@ for (let i = 0; i < length; i++) {
 
 //defining func
 function getSecondLargest(arr) {
-    //brute force soultion
+
+    /*brute force soultion*/
     // quickSort(arr, 0, length - 1);
     // let max = arr[length - 1];
     // for (let i = length - 2; i >= 0; i--) {
@@ -17,21 +18,37 @@ function getSecondLargest(arr) {
     //         return arr[i];
     //     }
     // }
+    //time complexity=O(nlogn+n)
 
-    //better approach
+    /*better approach*/
+    // let largest = arr[0];
+    // for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i] > largest) {
+    //         largest = arr[i];
+    //     }
+    // }
+    // let secondLargest = -1;
+    // for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i] > secondLargest && arr[i] != largest) {
+    //         secondLargest = arr[i];
+    //     }
+    // }
+    // return secondLargest;
+    //time complexity=O(2n)
+
+    /*optimal soultion*/
     let largest = arr[0];
-    for (let i = 0; i < arr.length; i++) {
+    let slargest = -1;
+    for (let i = 1; i < arr.length; i++) {
         if (arr[i] > largest) {
+            slargest = largest;
             largest = arr[i];
+        } else if (arr[i] < largest && arr[i] > slargest) {
+            slargest = arr[i];
         }
     }
-    let secondLargest = -1;
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > secondLargest && arr[i] != largest) {
-            secondLargest = arr[i];
-        }
-    }
-    return secondLargest;
+    return slargest;
+    //time complexity=O(n)
 }
 
 function partition(arr, low, high) {
