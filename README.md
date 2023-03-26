@@ -37,4 +37,12 @@ Step 2.2.3- Recursive Insertion Sort
 
 Step 2.2.4- Quick Sort
 
+Step 3- Arrays
+
+Step 3.1 - Largest element in an array.
+
+Step 3.2 - Second largest element in an array without sorting.
+
+Step3.3 - Check if the array is sorted.
+
 From this repo you find striver sheet all problems solved using javascript language.
