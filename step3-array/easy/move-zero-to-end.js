@@ -23,6 +23,30 @@ function moveZeroToEnd(arr) {
     }
 }
 
+//optimal solution
+function moveZeroToEndOptimal(arr) {
+    let firstzero = -1;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == 0) {
+            firstzero = i;
+            break;
+        }
+    }
+    if (firstzero == -1) {
+        return;
+    }
+    for (let i = firstzero + 1; i < arr.length; i++) {
+        if (arr[i] != 0) {
+            let temp = arr[i];
+            arr[i] = arr[firstzero];
+            arr[firstzero] = temp;
+            firstzero++;
+        }
+    }
+}
+
 //output
-moveZeroToEnd(arr);
+// moveZeroToEnd(arr); //time complexity=O(n)+O(d)+O(n-d)=O(2n) and space complexity=O(n)
+moveZeroToEndOptimal(arr);  //time complexity=O(x)+O(n-x)=O(n) and space complexity=O(1)
+
 console.log(`Array after moving zeros to end - ${arr}`);
