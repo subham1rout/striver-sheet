@@ -45,4 +45,6 @@ Step 3.2 - Second largest element in an array without sorting.
 
 Step 3.3 - Check if the array is sorted.
 
+Step 3.4 - Remove duplicates from sorted array
+
 From this repo you find striver sheet all problems solved using javascript language.
