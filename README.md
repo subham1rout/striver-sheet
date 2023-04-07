@@ -45,4 +45,14 @@ Step 3.2 - Second largest element in an array without sorting.
 
 Step 3.3 - Check if the array is sorted.
 
+Step 3.4 - Remove duplicates from sorted array.
+
+Step 3.5 - Left and right rotate an array by one place.
+
+Step 3.6- Left and right rotate an array by D places.
+
+Step 3.7 - Move zeroes to end.
+
+Step 3.8 - Linear Search.
+
 From this repo you find striver sheet all problems solved using javascript language.
