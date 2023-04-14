@@ -68,5 +68,5 @@ function arrayUnionOptimal(arr1, arr2) {
 // let unionarr = arrayUnion(arr1, arr2);  //time complexity=O(n1logn)+O(n2logn)+O(n1+n2) and space complexity=O(n1+n2)+O(n1+n2)
 // console.log(`Union of ${arr1} and ${arr2} is ${unionarr}`);
 
-let unionarrOptimal = arrayUnionOptimal(arr1, arr2);  //time complexity=O(n1logn)+O(n2logn)+O(n1+n2) and space complexity=O(n1+n2)+O(n1+n2)
+let unionarrOptimal = arrayUnionOptimal(arr1, arr2);  //time complexity=O(n1+n2) and space complexity=O(n1+n2) for only return the array not for algorithm
 console.log(`Union of ${arr1} and ${arr2} is ${unionarrOptimal}`);
