@@ -39,20 +39,34 @@ Step 2.2.4- Quick Sort
 
 Step 3- Arrays
 
-Step 3.1 - Largest element in an array.
+Step 3.1 - easy
 
-Step 3.2 - Second largest element in an array without sorting.
+Step 3.1.1 - Largest element in an array.
 
-Step 3.3 - Check if the array is sorted.
+Step 3.1.2 - Second largest element in an array without sorting.
 
-Step 3.4 - Remove duplicates from sorted array.
+Step 3.1.3 - Check if the array is sorted.
 
-Step 3.5 - Left and right rotate an array by one place.
+Step 3.1.4 - Remove duplicates from sorted array.
 
-Step 3.6- Left and right rotate an array by D places.
+Step 3.1.5 - Left and right rotate an array by one place.
 
-Step 3.7 - Move zeroes to end.
+Step 3.1.6- Left and right rotate an array by D places.
 
-Step 3.8 - Linear Search.
+Step 3.1.7 - Move zeroes to end.
+
+Step 3.1.8 - Linear Search.
+
+Step 3.1.9 - Find the union and intersection of 2 sorted arrays.
+
+Step 3.1.10 - Find the missing number in an array.
+
+Step 3.1.11 - Maximum consecutive ones.
+
+Step 3.1.12 - Find the number appear once and other number twice.
+
+Step 3.1.13 - Longest subarray with given sum(Positives)
+
+Step 3.1.14 - Longest subarray with given sum(Positives and Negatives)
 
 From this repo you find striver sheet all problems solved using javascript language.
