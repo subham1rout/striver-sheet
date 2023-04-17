@@ -69,4 +69,6 @@ Step 3.1.13 - Longest subarray with given sum(Positives)
 
 Step 3.1.14 - Longest subarray with given sum(Positives and Negatives)
 
+Step 3.2 - medium 
+
 From this repo you find striver sheet all problems solved using javascript language.
