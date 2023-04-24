@@ -50,7 +50,7 @@ function longestSubarray1(arr, k) {
 let longestsubarr1 = longestSubarray1(arr, sum);
 console.log(`Longest subarray length from the array [ ${arr} ] is ${longestsubarr1}`);
 
-//optimal approach
+//optimal approach(not working)
 function longestsubarrOptimal(arr, k) {
     let right = 0;
     let left = 0;
