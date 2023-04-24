@@ -49,3 +49,31 @@ function longestSubarray1(arr, k) {
 
 let longestsubarr1 = longestSubarray1(arr, sum);
 console.log(`Longest subarray length from the array [ ${arr} ] is ${longestsubarr1}`);
+
+//optimal approach
+function longestsubarrOptimal(arr, k) {
+    let right = 0;
+    let left = 0;
+    let sum = arr[0];
+    let maxlength = 0;
+    while (right < arr.length) {
+        while (left <= right && sum > k) {
+            sum = sum - arr[left];
+            left++;
+        }
+        if (sum == k) {
+            let temp = right - left + 1;
+            if (temp > maxlength) {
+                maxlength = temp;
+            }
+        }
+        right++;
+        if (right < arr.length) {
+            sum += arr[right];
+        }
+    }
+    return maxlength;
+}
+
+let longestsubarroptimal = longestsubarrOptimal(arr, sum);
+console.log(`Longest subarray from the array [ ${arr} ] from optimal solution is ${longestsubarroptimal}`);
