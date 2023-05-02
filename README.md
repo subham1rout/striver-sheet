@@ -71,6 +71,10 @@ Step 3.1.14 - Longest subarray with given sum(Positives and Negatives)
 
 Step 3.2 - medium 
 
+Step 3.2.1- 2 Sum problem
+
+Step 3.2.2- Sort an array of 0s,1s,2s.
+
 Step 3.3 - hard
 
 From this repo you find striver sheet all problems solved using javascript language.
