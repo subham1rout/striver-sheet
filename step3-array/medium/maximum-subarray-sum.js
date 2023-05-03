@@ -65,3 +65,32 @@ function kadanesAlgorithm(arr) {
 
 let sum2 = kadanesAlgorithm(arr);
 console.log(`optimal approach -> Maximum sub array sum from the array  [ ${arr} ] is ${sum2}`);
+
+//print the sub array with maximum sum
+function printSubarrayAlgorithm(arr) {
+    let max = Number.MIN_SAFE_INTEGER;
+    let sum = 0;
+    let ansstart;
+    let ansend;
+    for (let i = 0; i < arr.length; i++) {
+        if (sum == 0) {
+            ansstart = i;
+        }
+        sum += arr[i];
+        if (sum > max) {
+            max = sum;
+            ansend = i;
+        }
+        if (sum < 0) {
+            sum = 0;
+        }
+    }
+    let maxsubarray = [];
+    for (let i = ansstart; i <= ansend; i++) {
+        maxsubarray.push(arr[i]);
+    }
+    return maxsubarray;
+}
+
+let maxsubarr = printSubarrayAlgorithm(arr);
+console.log(`Maximum subarray from the array [ ${arr} ] is [ ${maxsubarr} ]`);
