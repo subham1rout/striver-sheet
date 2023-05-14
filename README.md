@@ -75,6 +75,14 @@ Step 3.2.1- 2 Sum problem
 
 Step 3.2.2- Sort an array of 0s,1s,2s.
 
+Step 3.2.3- Majority Element (>n/2 times)
+
+Step 3.2.4- kadane's Algorithm(maximum subarray sum)
+
+Step 3.2.5- Print the subarray with Maximum sum.
+
+Step 3.2.6- Best time to buy and sell stock
+
 Step 3.3 - hard
 
 From this repo you find striver sheet all problems solved using javascript language.
