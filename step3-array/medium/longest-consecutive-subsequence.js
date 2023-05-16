@@ -7,7 +7,7 @@ for (let i = 0; i < length; i++) {
     arr.push(parseInt(prompt("enter number:")));
 }
 
-//brute force 
+//brute force -> time=O(n^3) and space=O(1)
 function longestConsecutiveSequence(arr) {
     let n = arr.length;
     let max = 1;
@@ -34,8 +34,8 @@ function longestConsecutiveSequence(arr) {
     return max;
 }
 
-let value = longestConsecutiveSequence(arr);
-console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${value}`);
+// let value = longestConsecutiveSequence(arr);
+// console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${value}`);
 
 //alternate brute force approach
 var longestConsecutive = function (nums) {
@@ -63,5 +63,57 @@ var ls = (arr, el) => {
     return false;
 }
 
-let value1 = longestConsecutive(arr);
-console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${value1}`);
+// let value1 = longestConsecutive(arr);
+// console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${value1}`);
+
+
+//better approach -> time=O(nlogn) + O(n) and space=O(1)
+function longestConsecutiveSequenceBetter(arr) {
+    arr = arr.sort((a, b) => a - b);
+    let max = 1;
+    let count = 0;
+    let smaller = Number.MIN_SAFE_INTEGER;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] - 1 == smaller) {
+            count++;
+            smaller = arr[i];
+            if (count > max) {
+                max = count;
+            }
+        } else if (arr[i] !== smaller) {
+            count = 1;
+            smaller = arr[i];
+        }
+    }
+    return max;
+}
+
+// let value2 = longestConsecutiveSequenceBetter(arr);
+// console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${value2}`);
+
+
+//optimal approach -> time=O(n)+O(2n)=O(3n) and space=O(n)
+function longestConsecutiveSequenceOptimal(arr) {
+    let set = new Set();
+    for (let i = 0; i < arr.length; i++) {
+        set.add(arr[i]);
+    }
+    let max = 1;
+    for (const el of set) {
+        let x = el;
+        if (!set.has(x - 1)) {
+            let count = 1;
+            while (set.has(x + 1)) {
+                count++;
+                x++;
+            }
+            if (count > max) {
+                max = count;
+            }
+        }
+    }
+    return max;
+}
+
+let value3 = longestConsecutiveSequenceOptimal(arr);
+console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${value3}`);
