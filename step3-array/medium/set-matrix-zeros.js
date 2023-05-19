@@ -91,7 +91,7 @@ class Better {
 // obj1.setMatrixZeros(matrix);
 // console.log("Result matrix is ", matrix);
 
-//optimal approach
+//optimal approach -> time=O(2*m*n) and space=O(1)
 class Optimal {
 
     setMatrixZeros(matrix) {
