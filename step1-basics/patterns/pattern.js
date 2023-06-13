@@ -122,3 +122,155 @@ function printTriangle6(n) {
 }
 
 printTriangle6(n);
+
+//pattern-7
+//     *
+//    ***  
+//   *****
+//  *******
+// *********
+
+function printTriangle7(n) {
+    let string = '';
+    for (let i = n - 1; i >= 0; i--) {
+        for (let j = 0; j < i; j++) {
+            string += ' ';
+        }
+        for (let j = 0; j < (2 * n - 1) - 2 * i; j++) {
+            string += '*';
+        }
+        for (let j = 0; j < i; j++) {
+            string += ' ';
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle7(n);
+
+//pattern-8
+// *********
+//  *******
+//   *****
+//    ***
+//     *
+
+function printTriangle8(n) {
+    let string = '';
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < i; j++) {
+            string += ' ';
+        }
+        for (let j = 0; j < (2 * n - 1) - 2 * i; j++) {
+            string += '*';
+        }
+        for (let j = 0; j < n; j++) {
+            string += ' ';
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle8(n);
+
+//pattern-9
+//     *
+//    ***
+//   *****
+//  *******
+// *********
+// *********
+//  *******
+//   *****
+//    ***
+//     *
+
+function printDiamond9(n) {
+    let string = '';
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            string += ' ';
+        }
+        for (let j = 0; j < 2 * i + 1; j++) {
+            string += '*';
+        }
+        for (let j = 0; j < n - i - 1; j++) {
+            string += ' ';
+        }
+        string += '\n';
+    }
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < i; j++) {
+            string += ' ';
+        }
+        for (let j = 0; j < (2 * n - 1) - 2 * i; j++) {
+            string += '*';
+        }
+        for (let j = 0; j < i; j++) {
+            string += ' ';
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printDiamond9(n);
+
+//pattern-10
+// * 
+// * * 
+// * * * 
+// * * * * 
+// * * * * *
+// * * * *
+// * * *
+// * *
+// *
+
+function printTriangle10(n) {
+    let string = '';
+    for (let i = 1; i < 2 * n; i++) {
+        if (i <= n) {
+            for (let j = 0; j < i; j++) {
+                string += '*';
+            }
+        } else {
+            for (let j = 0; j < 2 * n - i; j++) {
+                string += '*';
+            }
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle10(n);
+
+//pattern-11
+// 1 
+// 0 1 
+// 1 0 1
+// 0 1 0 1 
+// 1 0 1 0 1
+
+function printTriangle11(n) {
+    let string = '';
+    let start;
+    for (let i = 0; i < n; i++) {
+        if (i % 2 == 0) {
+            start = 1;
+        } else {
+            start = 0;
+        }
+        for (let j = 0; j <= i; j++) {
+            string += start;
+            start = 1 - start;
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle11(n);
