@@ -274,3 +274,276 @@ function printTriangle11(n) {
 }
 
 printTriangle11(n);
+
+//pattern-12
+// 1                 1
+// 1 2             2 1
+// 1 2 3         3 2 1
+// 1 2 3 4     4 3 2 1
+// 1 2 3 4 5 5 4 3 2 1
+
+
+function printTriangle12(n) {
+    let string = '';
+    for (let i = 1; i <= n; i++) {
+        for (let j = 1; j <= i; j++) {
+            string += j;
+        }
+        for (let j = 1; j <= 2 * n - 2 * i; j++) {
+            string += ' ';
+        }
+        for (let j = i; j >= 1; j--) {
+            string += j;
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle12(n);
+
+//pattern-13
+// 1
+// 2 3
+// 4 5 6
+// 7 8 9 10
+// 11 12 13 14 15
+
+
+function printTriangle13(n) {
+    let string = '';
+    let start = 1;
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j <= i; j++) {
+            string += start + ' ';
+            start++;
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle13(n);
+
+//pattern-14
+// A
+// AB
+// ABC
+// ABCD
+// ABCDE
+
+function printTriangle14(n) {
+    let string = '';
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j <= i; j++) {
+            string += String.fromCharCode(65 + j);
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle14(n);
+
+//pattern-15
+// ABCDE
+// ABCD
+// ABC
+// AB
+// A
+
+function printTriangle15(n) {
+    let string = '';
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n - i; j++) {
+            string += String.fromCharCode(65 + j);
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle15(n);
+
+//pattern-16
+// A
+// BB
+// CCC
+// DDDD
+// EEEEE
+
+function printTriangle16(n) {
+    let string = '';
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j <= i; j++) {
+            string += String.fromCharCode(65 + i);
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle16(n);
+
+//pattern-17
+//    A
+//   ABA
+//  ABCBA
+// ABCDCBA
+//ABCDEDCBA
+
+function printTriangle17(n) {
+    let string = '';
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            string += ' ';
+        }
+        for (let j = 0; j <= i; j++) {
+            string += String.fromCharCode(65 + j);
+        }
+        for (let j = i - 1; j >= 0; j--) {
+            string += String.fromCharCode(65 + j);
+        }
+        for (let j = 0; j < n - i - 1; j++) {
+            string += ' ';
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle17(n);
+
+//pattern-18
+// E
+// E D
+// E D C
+// E D C B
+// E D C B A
+
+function printTriangle18(n) {
+    let string = '';
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j <= i; j++) {
+            string += String.fromCharCode(65 + n - j - 1);
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle18(n);
+
+//pattern-19
+// **********
+// ****  ****
+// ***    ***
+// **      **
+// *        *
+// *        *
+// **      **
+// ***    ***
+// ****  ****
+// **********
+
+function printTriangle19(n) {
+    let string = '';
+    for (let i = 0; i < 2 * n; i++) {
+        if (i < n) {
+            for (let j = 0; j < n - i; j++) {
+                string += '*';
+            }
+            for (let j = 0; j < 2 * i; j++) {
+                string += ' ';
+            }
+            for (let j = 0; j < n - i; j++) {
+                string += '*';
+            }
+        } else {
+            for (let j = 0; j < i - n + 1; j++) {
+                string += '*';
+            }
+            for (let j = 0; j < 2 * (2 * n - i - 1); j++) {
+                string += ' ';
+            }
+            for (let j = 0; j < i - n + 1; j++) {
+                string += '*';
+            }
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle19(n);
+
+//pattern-20
+// *        *
+// **      **
+// ***    ***
+// ****  ****
+// **********
+// ****  ****
+// ***    ***
+// **      **
+// *        *
+
+function printTriangle20(n) {
+    let string = '';
+    for (let i = 0; i < 2 * n - 1; i++) {
+        if (i < n) {
+            for (let j = 0; j <= i; j++) {
+                string += '*';
+            }
+            for (let j = 0; j < (2 * n) - 2 * (i + 1); j++) {
+                string += ' ';
+            }
+            for (let j = 0; j <= i; j++) {
+                string += '*';
+            }
+        } else {
+            for (let j = 0; j < 2 * n - i - 1; j++) {
+                string += '*';
+            }
+            for (let j = 0; j < 2 * n - 2 * (2 * n - i - 1); j++) {
+                string += ' ';
+            }
+            for (let j = 0; j < 2 * n - i - 1; j++) {
+                string += '*';
+            }
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printTriangle20(n);
+
+//pattern-21
+// ****
+// *  *
+// *  *
+// ****
+
+function printSquare21(n) {
+    let string = '';
+    for (let i = 0; i < n; i++) {
+        if (i == 0 || i == n - 1) {
+            for (let j = 0; j < n; j++) {
+                string += '*';
+            }
+        } else {
+            for (let j = 0; j < n; j++) {
+                if (j == 0 || j == n - 1) {
+                    string += '*';
+                } else {
+                    string += ' ';
+                }
+            }
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printSquare21(n);
