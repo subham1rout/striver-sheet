@@ -547,3 +547,53 @@ function printSquare21(n) {
 }
 
 printSquare21(n);
+
+//pattern-22
+// 5 5 5 5 5 5 5 5 5
+// 5 4 4 4 4 4 4 4 5
+// 5 4 3 3 3 3 3 4 5
+// 5 4 3 2 2 2 3 4 5
+// 5 4 3 2 1 2 3 4 5
+// 5 4 3 2 2 2 3 4 5
+// 5 4 3 3 3 3 3 4 5
+// 5 4 4 4 4 4 4 4 5
+// 5 5 5 5 5 5 5 5 5
+
+function min(a, b, c, d) {
+    let min1;
+    let min2;
+    if (a < b) {
+        min1 = a;
+    } else {
+        min1 = b;
+    }
+    if (c < d) {
+        min2 = c;
+    } else {
+        min2 = d;
+    }
+    if (min1 < min2) {
+        return min1;
+    } else {
+        return min2;
+    }
+}
+
+
+function printSquare22(n) {
+    let string = '';
+    for (let i = 0; i < 2 * n - 1; i++) {
+        for (let j = 0; j < 2 * n - 1; j++) {
+            let top = i;
+            let left = j;
+            let right = 2 * n - 2 - j;
+            let bottom = 2 * n - 2 - i;
+            let min = n - Math.min(top, left, right, bottom);
+            string += min + ' ';
+        }
+        string += '\n';
+    }
+    console.log(string);
+}
+
+printSquare22(n);
