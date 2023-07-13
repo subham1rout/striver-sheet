@@ -21,8 +21,8 @@ function reverseArray(arr) {
     }
     return arr;
 }
-// // let newArr = reverseArray(arr);
-// // console.log("Reverse of array: ", newArr);
+let newArr = reverseArray(arr);
+console.log("Reverse of array: ", newArr);
 
 
 //using recursion
@@ -51,3 +51,16 @@ function reverseArray3(arr, i) {
 
 reverseArray3(arr, 0);
 console.log("Now the new array using one varible is ", arr);
+
+
+//reverse a number
+const number = parseInt(prompt("enter the number:"));
+let revno = 0;
+function reverseNumber(n) {
+    if (n == 0) return;
+    revno = revno * 10 + (n % 10);
+    reverseNumber(Math.floor(n / 10));
+}
+
+reverseNumber(number);
+console.log("Reverse number of the given number is ", revno);

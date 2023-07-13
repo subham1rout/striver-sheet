@@ -42,3 +42,54 @@ printFibonacciSeries(seriesLength);
 //         return temp;
 //     }
 // };
+
+
+//fibonacci series upto value n
+function fibonacciSeries(n) {
+    let temp = 1;
+    let index = 0;
+    let fibarr = [0];
+    while (temp < n) {
+        fibarr.push(temp);
+        temp = fibarr[index] + fibarr[index + 1];
+        index++;
+    }
+    console.log(fibarr);
+}
+
+fibonacciSeries(seriesLength);
+
+//using recursion
+let fibarr = [0, 1];
+function fibonacciRecursion(n, index) {
+    let temp = fibarr[index] + fibarr[index + 1];
+    if (temp > n) return;
+    fibarr.push(temp);
+    fibonacciRecursion(n, index + 1);
+}
+
+fibonacciRecursion(seriesLength, 0);
+console.log(fibarr);
+
+// find nth fibonacci number -> f(n)= f(n-1)+f(n-2)
+const n = parseInt(prompt("Enter fibonacci nth term you want:"));
+
+function fibonacci(n) {
+    let fibarray = [];
+    fibarray[0] = 0;
+    fibarray[1] = 1;
+    for (let i = 2; i <= n; i++) {
+        fibarray[i] = fibarray[i - 1] + fibarray[i - 2];
+    }
+    return fibarray[n];
+}
+
+console.log("Nth term given by you in fibonacci series is ", fibonacci(n));
+
+//using recursion -> time=O(2^n) and space=O(n)
+function fibonacciRecursion2(n) {
+    if (n <= 1) return n;
+    return fibonacciRecursion2(n - 1) + fibonacciRecursion2(n - 2);
+}
+
+console.log("Nth term given by you in fibonacci series using recursion is ", fibonacciRecursion2(n));
