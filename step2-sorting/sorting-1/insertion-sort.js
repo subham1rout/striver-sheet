@@ -32,3 +32,24 @@ function insertionSort(arr, n) {
 //time comlexity=O(n^2) i.e 1+2+3+4+5+...+n= n(n+1)/2 =n^2 (average and worst case)
 //time complexity=O(n) i.e for only outer loop n times (best case)
 
+//revision-1
+const length1 = parseInt(prompt('enter the length of the array:'));
+const arr1 = [];
+for (let i = 0; i < length1; i++) {
+    arr1.push(parseInt(prompt('enter the number:')));
+}
+
+function insertionSort1(arr, n) {
+    for (let i = 0; i <= n - 1; i++) {
+        let j = i;
+        while (j > 0 && arr[j - 1] > arr[j]) {
+            let temp = arr[j - 1];
+            arr[j - 1] = arr[j];
+            arr[j] = temp;
+            j--;
+        }
+    }
+    console.log("Sorted array", arr);
+}
+
+insertionSort1(arr1, length1);
