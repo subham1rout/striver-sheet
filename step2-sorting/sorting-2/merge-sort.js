@@ -93,3 +93,56 @@ function merge(arr, low, mid, high) {
 //     }
 
 // }
+
+
+//revision-1
+
+const arrlength1 = parseInt(prompt('enter the array length:'));
+let i = 0;
+let arr1 = [];
+while (i < arrlength1) {
+    arr1.push(parseInt(prompt('enter the number:')));
+    i++;
+}
+
+function merge1(arr, low, mid, high) {
+    let temp = [];
+    let left = low;
+    let right = mid + 1;
+    while (left <= mid && right <= high) {
+        if (arr[left] <= arr[right]) {
+            temp.push(arr[left]);
+            left++;
+        } else {
+            temp.push(arr[right]);
+            right++;
+        }
+    }
+    while (left <= mid) {
+        temp.push(arr[left]);
+        left++;
+    }
+    while (right <= high) {
+        temp.push(arr[right]);
+        right++;
+    }
+    for (let i = low; i <= high; i++) {
+        arr[i] = temp[i - low];
+    }
+    return arr;
+}
+
+function mS(arr, low, high) {
+    if (low == high) return;
+    let mid = Math.floor((low + high) / 2);
+    mS(arr, low, mid);
+    mS(arr, mid + 1, high);
+    return merge1(arr, low, mid, high);
+}
+
+function mergeSort1(arr, n) {
+    return mS(arr, 0, n - 1);
+}
+
+let sortedarr = mergeSort1(arr1, arrlength1);
+console.log("Sorted array is", sortedarr);
