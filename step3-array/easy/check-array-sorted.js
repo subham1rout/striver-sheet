@@ -27,3 +27,14 @@ if (flag == -1) {
 }
 
 //time complexity=O(n) and space complexity=O(n)
+
+
+//revision-1
+function isSorted(arr, n) {
+    let flag = true;
+    for (let i = 1; i < n; i++) {
+        if (arr[i] < arr[i - 1]) flag = false;
+    }
+    return flag;
+}
+console.log("Array is sorted -> ", isSorted(arr, length));
