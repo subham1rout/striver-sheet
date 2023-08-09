@@ -7,7 +7,7 @@ for (let i = 0; i < length; i++) {
     arr.push(parseInt(prompt("Enter the number:")));
 }
 
-//defining function
+//defining function -> time complexity=O(n) and space complexity=O(1)
 function linearSearch(arr, el) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] == el) {
@@ -19,5 +19,15 @@ function linearSearch(arr, el) {
 
 //output
 let value = parseInt(prompt("Enter number to search:"));
-let resultindex = linearSearch(arr, value); //time complexity=O(n) and space complexity=O(1)
-console.log(`${value} present in index= ${resultindex}`);
+console.log(`value present in index= ${linearSearch(arr, value)}`);
+
+
+//revision-1 ->time=O(n) and space=O(1)
+function linearSearch1(arr, length, k) {
+    for (let i = 0; i < length; i++) {
+        if (arr[i] == k) return i;
+    }
+    return -1;
+}
+let value1 = parseInt(prompt("Enter value to search:"));
+console.log("Value present in index=", linearSearch1(arr, length, value1));
