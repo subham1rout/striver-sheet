@@ -73,3 +73,20 @@ function findMissingNumberXOR(arr, n) {
 
 let missingnumXOR = findMissingNumberXOR(arr, arrlength);
 console.log("missing number from xor approach is ", missingnumXOR);
+
+
+//revision-1
+function missingNumber1(arr, n) {
+    for (let i = 1; i <= n; i++) {
+        let flag = 0;
+        for (let j = 0; j < arr.length; j++) {
+            if (i == arr[j]) {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0) return i;
+    }
+}
+
+console.log("missing number from the array is ", missingNumber1(arr, arrlength));
