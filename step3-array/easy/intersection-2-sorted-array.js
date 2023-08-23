@@ -13,7 +13,7 @@ for (let i = 0; i < length2; i++) {
     arr2.push(parseInt(prompt("enter number: ")));
 }
 
-//defining function
+//brute force -> time complexity=O(n1*n2) and space complexity=O(n2)
 function intersectionArray(arr1, arr2) {
     let intersectionArr = [];
     let visited = new Array(arr2.length).fill(0);
@@ -29,8 +29,9 @@ function intersectionArray(arr1, arr2) {
     }
     return intersectionArr;
 }
+// console.log(`intersection of 2 arr:`, intersectionArray(arr1, arr2));
 
-//defining function optimal approach
+//optimal approach -> time complexity=O(n1+n2) and space complexity=O(1) i.e no extra space used(O(n1+n2) used only for input array)
 function intersectionArrayOptimal(arr1, arr2) {
     let intArr = [];
     let i = 0;
@@ -48,9 +49,23 @@ function intersectionArrayOptimal(arr1, arr2) {
     }
     return intArr;
 }
+// console.log(`intersection of 2 arr optimal approach:`, intersectionArrayOptimal(arr1, arr2));
 
-//calling function
-let arr = intersectionArray(arr1, arr2); //time complexity=O(n1*n2) and space complexity=O(n2)
-console.log(`intersection of 2 arr:`, arr);
-let arroptimal = intersectionArrayOptimal(arr1, arr2);  //time complexity=O(n1+n2) and space complexity=O(1) i.e no extra space used(O(n1+n2) used only for input array)
-console.log(`intersection of 2 arr optimal approach:`, arroptimal);
+
+//revision-1
+//brute force -> time=O(n*m)
+function intersection(arr1, arr2, m, n) {
+    let result = [];
+    let visitedArr = new Array(n).fill(0);
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (arr1[i] == arr2[j] && visitedArr[j] == 0) {
+                result.push(arr1[i]);
+                visitedArr[j] = 1;
+            }
+            if (arr1[i] < arr2[j]) break;
+        }
+    }
+    return result;
+}
+console.log(`intersection of 2 array ${arr1} and ${arr2} is ${intersection(arr1, arr2, length1, length2)}`);
