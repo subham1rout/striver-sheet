@@ -7,8 +7,6 @@ for (let i = 0; i < length; i++) {
     arr.push(parseInt(prompt("Enter the number:")));
 }
 let arrlength = parseInt(prompt("Enter actual arr length:"));
-console.log("Array is", arr, " and Actual array length is ", arrlength);
-
 
 
 //brute force approach -> time complexity=O(n*n) and space complexity=O(1)
@@ -24,9 +22,7 @@ function findMissingNumber(arr, n) {
         if (flag == 0) return i;
     }
 }
-
-let missingnum = findMissingNumber(arr, arrlength);
-console.log("missing number is ", missingnum);
+console.log("missing number is ", findMissingNumber(arr, arrlength));
 
 
 //better approach -> time complexity=O(n+n) and space complexity=O(n)
@@ -40,9 +36,7 @@ function findMissingNumberBetter(arr, n) {
     }
 
 }
-
-let missingnumBetter = findMissingNumberBetter(arr, arrlength);
-console.log("missing number from better approach is ", missingnumBetter);
+console.log("missing number from better approach is ", findMissingNumberBetter(arr, arrlength));
 
 
 //optimal approach -> time complexity=O(n) and space complexity=O(1)
@@ -54,9 +48,7 @@ function findMissingNumberOptimal(arr, n) {
     }
     return sum - arrsum;
 }
-
-let missingnumOptimal = findMissingNumberOptimal(arr, arrlength);
-console.log("missing number from optimal approach is ", missingnumOptimal);
+console.log("missing number from optimal approach is ", findMissingNumberOptimal(arr, arrlength));
 
 
 //XOR approach -> better time and space from above time=O(n) and space=O(1)
@@ -70,12 +62,11 @@ function findMissingNumberXOR(arr, n) {
     xor1 = xor1 ^ n;
     return xor1 ^ xor2;
 }
-
-let missingnumXOR = findMissingNumberXOR(arr, arrlength);
-console.log("missing number from xor approach is ", missingnumXOR);
+console.log("missing number from xor approach is ", findMissingNumberXOR(arr, arrlength));
 
 
 //revision-1
+//brute -> time=O(n^2) and space=O(1)
 function missingNumber1(arr, n) {
     for (let i = 1; i <= n; i++) {
         let flag = 0;
@@ -88,5 +79,26 @@ function missingNumber1(arr, n) {
         if (flag == 0) return i;
     }
 }
-
 console.log("missing number from the array is ", missingNumber1(arr, arrlength));
+
+//brute -> time=O(n^2) and space=O(1)
+function missingNumber2(arr, n) {
+    for (let i = 1; i <= n; i++) {
+        if (!arr.includes(i)) return i;
+    }
+}
+console.log("missing number from the array is ", missingNumber2(arr, arrlength));
+
+function missingNumber3(arr, n) {
+    let hasharr = new Array(n + 1).fill(0);
+    for (let i = 0; i < arr.length; i++) {
+        hasharr[arr[i]] = 1;
+    }
+    for (let i = 1; i <= n; i++) {
+        if (hasharr[i] == 0) {
+            console.log(i);
+            return i;
+        }
+    }
+}
+console.log("missing number from the array is ", missingNumber3(arr, arrlength));

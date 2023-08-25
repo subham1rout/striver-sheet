@@ -53,7 +53,7 @@ function intersectionArrayOptimal(arr1, arr2) {
 
 
 //revision-1
-//brute force -> time=O(n*m)
+//brute force -> time=O(n*m) and space=O(n+m)
 function intersection(arr1, arr2, m, n) {
     let result = [];
     let visitedArr = new Array(n).fill(0);
@@ -62,6 +62,7 @@ function intersection(arr1, arr2, m, n) {
             if (arr1[i] == arr2[j] && visitedArr[j] == 0) {
                 result.push(arr1[i]);
                 visitedArr[j] = 1;
+                break;
             }
             if (arr1[i] < arr2[j]) break;
         }
@@ -69,3 +70,21 @@ function intersection(arr1, arr2, m, n) {
     return result;
 }
 console.log(`intersection of 2 array ${arr1} and ${arr2} is ${intersection(arr1, arr2, length1, length2)}`);
+
+//optimal -> time=O(n+m) and space=O(1)
+function intersection1(arr1, arr2, m, n) {
+    let i = 0;
+    let j = 0;
+    let result = [];
+    while (i < m && j < n) {
+        if (arr1[i] < arr2[j]) i++;
+        else if (arr1[i] > arr2[i]) j++;
+        else {
+            result.push(arr1[i]);
+            i++;
+            j++;
+        }
+    }
+    return result;
+}
+console.log(`intersection of 2 array optimal ${arr1} and ${arr2} is ${intersection1(arr1, arr2, length1, length2)}`);
