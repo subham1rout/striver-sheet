@@ -26,3 +26,22 @@ function getMaximumConsecutiveOnes(arr) {
 
 let result = getMaximumConsecutiveOnes(arr);
 console.log("Maximum consecutive ones in the array ", arr, " is ", result);
+
+
+//revision-1 -> time=O(n) and space=O(1)
+function maxConsecutive(arr, n) {
+    let count = 0;
+    let max = 0;
+    for (let i = 0; i < n; i++) {
+        if (arr[i] == 1) {
+            count++;
+            if (count > max) {
+                max = count;
+            }
+        } else {
+            count = 0;
+        }
+    }
+    return max;
+}
+console.log("Maximum consecutive ones in the array ", arr, " is ", maxConsecutive(arr, length));
