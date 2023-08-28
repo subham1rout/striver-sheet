@@ -20,9 +20,7 @@ function getNumberAppearOnce(arr) {
     }
     return -1;
 }
-
-let result = getNumberAppearOnce(arr);
-console.log(`Number appear once from the array [ ${arr} ] is ${result}`);
+console.log(`Number appear once from the array [ ${arr} ] is ${getNumberAppearOnce(arr)}`);
 
 //better approach -> time= O(3n) and space=O(n)
 function getNumberAppearOnceBetter(arr) {
@@ -42,9 +40,7 @@ function getNumberAppearOnceBetter(arr) {
         }
     }
 }
-
-let result1 = getNumberAppearOnceBetter(arr);
-console.log(`Number appear once from the array in better solution [ ${arr} ] is ${result1}`);
+console.log(`Number appear once from the array in better solution [ ${arr} ] is ${getNumberAppearOnceBetter(arr)}`);
 
 //using map -> time= o(n/2+1) and space = O(n/2+1)
 function getNumberAppearOnceUsingMap(arr) {
@@ -70,9 +66,7 @@ function getNumberAppearOnceUsingMap(arr) {
         }
     }
 }
-
-let result2 = getNumberAppearOnceUsingMap(arr);
-console.log(`Number appear once from the array using map [ ${arr} ] is ${result2}`);
+console.log(`Number appear once from the array using map [ ${arr} ] is ${getNumberAppearOnceUsingMap(arr)}`);
 
 //optimal approach -> time=O(n) and space = O(1)
 function getNumberAppearOnceOptimal(arr) {
@@ -82,6 +76,26 @@ function getNumberAppearOnceOptimal(arr) {
     }
     return xor;
 }
+console.log(`Number appear once from the array using optimal approach [ ${arr} ] is ${getNumberAppearOnceOptimal(arr)}`);
 
-let optimalresult = getNumberAppearOnceOptimal(arr);
-console.log(`Number appear once from the array using optimal approach [ ${arr} ] is ${optimalresult}`);
+
+//revision-1
+//brute -> time=O(n^2) and space=O(1)
+function findNumber(arr, n) {
+    let count = 0;
+    let num;
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                count++;
+            }
+        }
+        if (count == 1) {
+            num = arr[i];
+            break;
+        }
+        count = 0;
+    }
+    return num;
+}
+console.log("Number appear once is", findNumber(arr, length));
