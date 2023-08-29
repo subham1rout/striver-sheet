@@ -99,3 +99,46 @@ function findNumber(arr, n) {
     return num;
 }
 console.log("Number appear once is", findNumber(arr, length));
+
+//better -> time=O(3n) and space=O(max)
+function findNumber1(arr, n) {
+    let max = arr[0];
+    for (let i = 0; i < n; i++) {
+        if (max < arr[i]) max = arr[i];
+    }
+    let hasharr = new Array(max + 1).fill(0);
+    for (let i = 0; i < n; i++) {
+        hasharr[arr[i]]++;
+    }
+    for (let i = 0; i < n; i++) {
+        if (hasharr[arr[i]] == 1) return arr[i];
+    }
+}
+console.log("Number appear once is", findNumber1(arr, length));
+
+//using map data structure -> time=O(N/2+1)+O(Nlogn) and space=O(N/2+1)
+function findNumber2(arr, n) {
+    let map = new Map();
+    for (let i = 0; i < n; i++) {
+        let value = map.get(arr[i]);
+        if (!value) {
+            map.set(arr[i], 1);
+        } else {
+            map.set(arr[i], value + 1);
+        }
+    }
+    for (const [key, value] of map) {
+        if (value == 1) return key;
+    }
+}
+console.log("Number appear once is", findNumber2(arr, length));
+
+//optimal -> time=O(n) and space=O(1)
+function findNumber3(arr, n) {
+    let xor = 0;
+    for (let i = 0; i < n; i++) {
+        xor = xor ^ arr[i];
+    }
+    return xor;
+}
+console.log("Number appear once is", findNumber3(arr, length));
