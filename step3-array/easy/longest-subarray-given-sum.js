@@ -77,3 +77,45 @@ function longestsubarrOptimal(arr, k) {
 
 let longestsubarroptimal = longestsubarrOptimal(arr, sum);
 console.log(`Longest subarray from the array [ ${arr} ] from optimal solution is ${longestsubarroptimal}`);
+
+
+//revision-1
+//brute -> time=O(n^3) and space=O(1)
+function maxSubarrLength(arr, n, k) {
+    let max = 0;
+    for (let i = 0; i < n; i++) {
+        for (let j = i; j < n; j++) {
+            let sum = 0;
+            for (let l = i; l <= j; l++) {
+                sum += arr[l];
+            }
+            if (sum == k) {
+                let length = j - i + 1;
+                if (max < length) {
+                    // console.log("i", i, "j", j, "k", k, "sum", sum, "max", max, "length", length);
+                    max = length;
+                }
+            }
+        }
+    }
+    return max;
+}
+console.log(`Longest subarray length is ${maxSubarrLength(arr, length, sum)}`);
+
+//brute -> time=O(n^2) and space=O(1)
+function maxSubarrLength(arr, n, k) {
+    let max = 0;
+    for (let i = 0; i < n; i++) {
+        let sum = 0;
+        for (let j = i; j < n; j++) {
+            sum += arr[j];
+            if (sum == k) {
+                if (max < j - i + 1) {
+                    max = j - i + 1;
+                }
+            }
+        }
+    }
+    return max;
+}
+console.log(`Longest subarray length is ${maxSubarrLength(arr, length, sum)}`);
