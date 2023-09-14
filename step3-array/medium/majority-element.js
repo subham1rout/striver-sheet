@@ -23,9 +23,7 @@ function majorityElement(arr) {
     }
     return -1;
 }
-
-let element = majorityElement(arr);
-console.log("Majority element from the array is ", element);
+// console.log("Majority element from the array is ", majorityElement(arr));
 
 //better approach -> time=O(3n) and space=O(n)
 function majorityElementHashing(arr) {
@@ -46,9 +44,7 @@ function majorityElementHashing(arr) {
     }
     return -1;
 }
-
-let element1 = majorityElementHashing(arr);
-console.log("Majority element from the array is ", element1);
+// console.log("Majority element from the array is ", majorityElementHashing(arr));
 
 //Moore's Voting Algorithm -> optimal solution -> time=O(n) and space=O(1)
 function getMajorityElement(arr) {
@@ -75,6 +71,64 @@ function getMajorityElement(arr) {
     }
     return -1;
 }
+// console.log("Majority element from the array is ", getMajorityElement(arr));
 
-let majority = getMajorityElement(arr);
-console.log("Majority element from the array is ", majority);
+
+//revision-1
+//brute -> time=O(n^2) and space=O(1)
+function majority(arr, n) {
+    for (let i = 0; i < n; i++) {
+        let count = 0;
+        for (let j = 0; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                count++;
+            }
+        }
+        if (count > Math.floor(n / 2)) {
+            return arr[i];
+        }
+    }
+}
+console.log("Majority Element -> ", majority(arr, length));
+
+//better -> time=O(nlogn)+O(n) and space=O(n)
+function majority1(arr, n) {
+    let map = new Map();
+    for (let i = 0; i < n; i++) {
+        if (!map.has(arr[i])) {
+            map.set(arr[i], 1);
+        } else {
+            let value = map.get(arr[i]);
+            map.set(arr[i], value + 1);
+        }
+    }
+    for (const [key, value] of map) {
+        if (value > Math.floor(n / 2)) {
+            return key;
+        }
+    }
+    return -1;
+}
+console.log("Majority Element -> ", majority1(arr, length));
+
+// optimal -> time=O(n) and space=O(1) -> Moore's Voting Algorithm
+function majority2(arr, n) {
+    let el;
+    let count = 0;
+    for (let i = 0; i < n; i++) {
+        if (count == 0) {
+            count = 1;
+            el = arr[i];
+        } else if (el == arr[i]) count++;
+        else count--;
+    }
+    let count1 = 0;
+    for (let i = 0; i < n; i++) {
+        if (el == arr[i]) count1++;
+    }
+    if (count1 > Math.floor(n / 2)) {
+        return el;
+    }
+    return -1;
+}
+console.log("Majority Element -> ", majority2(arr, length));

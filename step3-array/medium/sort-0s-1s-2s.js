@@ -70,3 +70,56 @@ function sortArrOptimal(arr) {
 
 sortArrOptimal(arr);
 console.log("Sorted array optimal is", arr);
+
+
+//revision-1
+//brute -> time=o(nlogn) and space=o(n)
+//using merge sort
+
+//better -> time=O(2n) and space=O(1)
+function sort(arr, n) {
+    let countzero = 0;
+    let countone = 0;
+    let counttwo = 0;
+    for (let i = 0; i < n; i++) {
+        if (arr[i] == 0) countzero++;
+        else if (arr[i] == 1) countone++;
+        else counttwo++;
+    }
+    for (let i = 0; i < countzero; i++) {
+        arr[i] = 0;
+    }
+    for (let i = countzero; i < countzero + countone; i++) {
+        arr[i] = 1;
+    }
+    for (let i = countzero + countone; i < countzero + countone + counttwo; i++) {
+        arr[i] = 2;
+    }
+    return arr;
+}
+console.log("Sort Result ->", sort(arr, length));
+
+//optimal -> Dutch National Flag Alg -> time=O(n) and space=O(1)
+function sortDNF(arr, n) {
+    let low = 0;
+    let mid = 0;
+    let high = n - 1;
+    while (mid <= high) {
+        if (arr[mid] == 0) {
+            let temp = arr[low];
+            arr[low] = arr[mid];
+            arr[mid] = temp;
+            low++;
+            mid++;
+        } else if (arr[mid] == 1) {
+            mid++;
+        } else {
+            let temp = arr[mid];
+            arr[mid] = arr[high];
+            arr[high] = temp;
+            high--;
+        }
+    }
+    return arr;
+}
+console.log("Sort Result ->", sortDNF(arr, length));
