@@ -94,3 +94,31 @@ function printSubarrayAlgorithm(arr) {
 
 let maxsubarr = printSubarrayAlgorithm(arr);
 console.log(`Maximum subarray from the array [ ${arr} ] is [ ${maxsubarr} ]`);
+
+
+//revision-1
+function maxSubarraySum(arr, n) {
+    let maxsum = Number.MIN_SAFE_INTEGER;
+    let start = -1;
+    let end = -1;
+    for (let i = 0; i < n; i++) {
+        for (let j = i; j < n; j++) {
+            let sum = 0;
+            for (let k = i; k <= j; k++) {
+                sum += arr[k];
+            }
+            if (sum > maxsum) {
+                maxsum = sum;
+                start = i;
+                end = j;
+            }
+        }
+    }
+    let subarr = [];
+    for (let i = start; i <= end; i++) {
+        subarr.push(arr[i]);
+    }
+    console.log("Result subarray is ", subarr);
+    return maxsum;
+}
+console.log("Maximum subarray sum=", maxSubarraySum(arr, length));
