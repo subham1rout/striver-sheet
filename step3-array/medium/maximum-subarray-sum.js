@@ -24,9 +24,7 @@ function maximumSubarraySum(arr) {
     }
     return max;
 }
-
-let sum = maximumSubarraySum(arr);
-console.log(`Maximum sub array sum from the array [ ${arr} ] is ${sum}`);
+console.log(`Maximum sub array sum from the array [ ${arr} ] is ${maximumSubarraySum(arr)}`);
 
 //better approach -> time=o(n^2) and space=O(1)
 function maximumSubarraySum1(arr) {
@@ -43,9 +41,7 @@ function maximumSubarraySum1(arr) {
     }
     return max;
 }
-
-let sum1 = maximumSubarraySum1(arr);
-console.log(`better approach -> Maximum sub array sum from the array [ ${arr} ] is ${sum1}`);
+console.log(`better approach -> Maximum sub array sum from the array [ ${arr} ] is ${maximumSubarraySum1(arr)}`);
 
 //Kadane's Algorithm -> optimal solution -> time=O(n) and space=O(1)
 function kadanesAlgorithm(arr) {
@@ -62,9 +58,7 @@ function kadanesAlgorithm(arr) {
     }
     return max;
 }
-
-let sum2 = kadanesAlgorithm(arr);
-console.log(`optimal approach -> Maximum sub array sum from the array  [ ${arr} ] is ${sum2}`);
+console.log(`optimal approach -> Maximum sub array sum from the array  [ ${arr} ] is ${kadanesAlgorithm(arr)}`);
 
 //print the sub array with maximum sum
 function printSubarrayAlgorithm(arr) {
@@ -91,9 +85,7 @@ function printSubarrayAlgorithm(arr) {
     }
     return maxsubarray;
 }
-
-let maxsubarr = printSubarrayAlgorithm(arr);
-console.log(`Maximum subarray from the array [ ${arr} ] is [ ${maxsubarr} ]`);
+console.log(`Maximum subarray from the array [ ${arr} ] is [ ${printSubarrayAlgorithm(arr)} ]`);
 
 
 //revision-1
@@ -122,3 +114,28 @@ function maxSubarraySum(arr, n) {
     return maxsum;
 }
 console.log("Maximum subarray sum=", maxSubarraySum(arr, length));
+
+
+function maxSubarraySum1(arr, n) {
+    let maxsum = Number.MIN_SAFE_INTEGER;
+    let start = -1;
+    let end = -1;
+    for (let i = 0; i < n; i++) {
+        let sum = 0;
+        for (let j = i; j < n; j++) {
+            sum += arr[j];
+            if (sum > maxsum) {
+                maxsum = sum;
+                start = i;
+                end = j;
+            }
+        }
+    }
+    let subarr = [];
+    for (let i = start; i <= end; i++) {
+        subarr.push(arr[i]);
+    }
+    console.log("Result subarray is ", subarr);
+    return maxsum;
+}
+console.log("Maximum subarray sum1=", maxSubarraySum1(arr, length));
