@@ -89,6 +89,7 @@ console.log(`Maximum subarray from the array [ ${arr} ] is [ ${printSubarrayAlgo
 
 
 //revision-1
+//brute -> time=O(n^3) and space=O(1) for to get sum but space=O(n) for print the subarray
 function maxSubarraySum(arr, n) {
     let maxsum = Number.MIN_SAFE_INTEGER;
     let start = -1;
@@ -115,7 +116,7 @@ function maxSubarraySum(arr, n) {
 }
 console.log("Maximum subarray sum=", maxSubarraySum(arr, length));
 
-
+//better -> time=o(n^2) and space=O(1) for to get sum but space=O(n) for print the subarray
 function maxSubarraySum1(arr, n) {
     let maxsum = Number.MIN_SAFE_INTEGER;
     let start = -1;
@@ -139,3 +140,27 @@ function maxSubarraySum1(arr, n) {
     return maxsum;
 }
 console.log("Maximum subarray sum1=", maxSubarraySum1(arr, length));
+
+//optimal -> kadane's alg -> time=O(n) and space=O(1)
+function maxSubarraySum2(arr, n) {
+    let maxsum = Number.MIN_SAFE_INTEGER;
+    let sum = 0;
+    let start = -1;
+    let end = -1;
+    for (let i = 0; i < n; i++) {
+        if (sum == 0) start = i;
+        sum += arr[i];
+        if (sum > maxsum) {
+            maxsum = sum;
+            end = i;
+        }
+        if (sum < 0) sum = 0;
+    }
+    let subarr = [];
+    for (let i = start; i <= end; i++) {
+        subarr.push(arr[i]);
+    }
+    console.log("Result subarray is ", subarr);
+    return maxsum;
+}
+console.log("Maximum subarray sum2=", maxSubarraySum2(arr, length));
