@@ -46,3 +46,40 @@ function bestTimeBuySellStock1(arr) {
 
 let maxprofit1 = bestTimeBuySellStock1(arr);
 console.log(`According to the array [ ${arr} ], Buy date is ${maxprofit1[0]} and Sell date is ${maxprofit1[1]}`);
+
+
+//revision-1
+//brute -> time=O(n^2) and space=O(1)
+function bestTime(arr, n) {
+    let maxprofit = 0;
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = i + 1; j < n; j++) {
+            let profit = arr[j] - arr[i];
+            if (profit > maxprofit) maxprofit = profit;
+        }
+    }
+    return maxprofit;
+}
+console.log("Maxium profit from the price array is", bestTime(arr, length));
+
+// optimal -> time=O(n) and space=O(1)
+function bestTime1(arr, n) {
+    let maxprofit = 0;
+    let min = arr[0];
+    let buydate = -1;
+    let selldate = -1;
+    for (let i = 1; i < n; i++) {
+        let profit = arr[i] - min;
+        if (profit > maxprofit) {
+            maxprofit = profit;
+            buydate = min;
+            selldate = arr[i];
+        }
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    console.log("Buy and Sell Date are ", buydate, selldate);
+    return maxprofit;
+}
+console.log("Maxium profit1 from the price array is", bestTime1(arr, length));
