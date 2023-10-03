@@ -25,9 +25,7 @@ function rearrange(arr) {
     }
     return arr;
 }
-
-// let ans = rearrange(arr);
-// console.log("Rearrange array is ", ans);
+console.log("Rearrange array is ", rearrange(arr));
 
 
 //optimal soulution -> time=O(n) and space = O(n)
@@ -47,9 +45,7 @@ function rearrange1(arr) {
     }
     return ans;
 }
-
-let ans1 = rearrange1(arr);
-console.log("Rearranged array is ", ans1);
+console.log("Rearranged array is ", rearrange1(arr));
 
 //brute force having any length of the array i.e. not even array
 function rearrange2(arr) {
@@ -86,6 +82,40 @@ function rearrange2(arr) {
     }
     return arr;
 }
+console.log("Rearrange of the array is ", rearrange2(arr));
 
-// let ans2 = rearrange2(arr);
-// console.log("Rearrange of the array is ", ans2);
+
+//revision-1
+//brute -> time=O(n+n/2) and space=O(n)
+function rearrangeArr(arr, length) {
+    let parr = [];
+    let narr = [];
+    for (let i = 0; i < length; i++) {
+        if (arr[i] < 0) narr.push(arr[i]);
+        else parr.push(arr[i]);
+    }
+    for (let i = 0, j = 0; i < parr.length; i++, j++) {
+        arr[2 * i] = parr[i];
+        arr[2 * i + 1] = narr[i];
+    }
+    return arr;
+}
+console.log("Rearrange of the arr", rearrangeArr(arr, length));
+
+//optimal -> time=O(n) and space=O(n)
+function rearrangeArr2(arr, length) {
+    let ans = [];
+    let pI = 0;
+    let nI = 1;
+    for (let i = 0; i < length; i++) {
+        if (arr[i] < 0) {
+            ans[nI] = arr[i];
+            nI += 2;
+        } else {
+            ans[pI] = arr[i];
+            pI += 2;
+        }
+    }
+    return ans;
+}
+console.log("Rearrange1 of the arr", rearrangeArr2(arr, length));
