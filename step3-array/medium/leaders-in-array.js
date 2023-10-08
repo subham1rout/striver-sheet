@@ -44,3 +44,21 @@ function leadersInArrayOptimal(arr) {
 
 let ans2 = leadersInArrayOptimal(arr);
 console.log(`Leaders in the array [ ${arr} ] is [ ${ans2} ]`);
+
+
+//revision-1
+function leaders(arr, n) {
+    let leaders = [];
+    for (let i = 0; i < n; i++) {
+        let flag = 0;
+        for (let j = i + 1; j < n; j++) {
+            if (arr[i] < arr[j]) {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0) leaders.push(arr[i]);
+    }
+    return leaders;
+}
+console.log("Leaders Array", leaders(arr, length));

@@ -54,7 +54,7 @@ function nextPermutation(arr) {
     return reverse(arr, index + 1, n - 1);
 }
 
-// console.log(`Next pemutation for the array [ ${arr} ] is [ ${nextPermutation(arr)} ]`);
+console.log(`Next pemutation for the array [ ${arr} ] is [ ${nextPermutation(arr)} ]`);
 
 
 //revision-1
