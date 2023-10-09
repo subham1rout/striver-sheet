@@ -47,6 +47,7 @@ console.log(`Leaders in the array [ ${arr} ] is [ ${ans2} ]`);
 
 
 //revision-1
+// brute -> time=O(n^2) and space=O(n) for returning the array
 function leaders(arr, n) {
     let leaders = [];
     for (let i = 0; i < n; i++) {
@@ -62,3 +63,17 @@ function leaders(arr, n) {
     return leaders;
 }
 console.log("Leaders Array", leaders(arr, length));
+
+//optimal -> time=O(n) and space=O(n) for returning not using
+function leaders1(arr, n) {
+    let leader = [];
+    let max = Number.MIN_SAFE_INTEGER;
+    for (let i = n - 1; i >= 0; i--) {
+        if (arr[i] > max) {
+            leader.push(arr[i]);
+            max = arr[i];
+        }
+    }
+    return leader;
+}
+console.log("Leaders Array1", leaders1(arr, length));
