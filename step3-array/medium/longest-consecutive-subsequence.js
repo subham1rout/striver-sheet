@@ -33,9 +33,7 @@ function longestConsecutiveSequence(arr) {
     }
     return max;
 }
-
-// let value = longestConsecutiveSequence(arr);
-// console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${value}`);
+console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${longestConsecutiveSequence(arr)}`);
 
 //alternate brute force approach
 var longestConsecutive = function (nums) {
@@ -62,9 +60,7 @@ var ls = (arr, el) => {
     }
     return false;
 }
-
-// let value1 = longestConsecutive(arr);
-// console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${value1}`);
+console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${longestConsecutive(arr)}`);
 
 
 //better approach -> time=O(nlogn) + O(n) and space=O(1)
@@ -87,9 +83,7 @@ function longestConsecutiveSequenceBetter(arr) {
     }
     return max;
 }
-
-// let value2 = longestConsecutiveSequenceBetter(arr);
-// console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${value2}`);
+console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${longestConsecutiveSequenceBetter(arr)}`);
 
 
 //optimal approach -> time=O(n)+O(2n)=O(3n) and space=O(n)
@@ -114,6 +108,23 @@ function longestConsecutiveSequenceOptimal(arr) {
     }
     return max;
 }
+console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${longestConsecutiveSequenceOptimal(arr)}`);
 
-let value3 = longestConsecutiveSequenceOptimal(arr);
-console.log(`Longest Consecutive Sequnce of the array [ ${arr} ] is ${value3}`);
+
+//revision-1
+//brute -> time=O(n^2) and space=O(1)
+function longestConsecutive1(arr, n) {
+    let max = 1;
+    for (let i = 0; i < n; i++) {
+        let count = 1;
+        let temp = arr[i] + 1;
+        while (arr.includes(temp)) {
+            count++;
+            temp++;
+        }
+        if (count > max) max = count;
+        return max;
+    }
+}
+console.log("Longest Consecutive sequence", longestConsecutive(arr, length));
+
