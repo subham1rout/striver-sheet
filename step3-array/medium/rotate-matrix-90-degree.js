@@ -71,20 +71,58 @@ function roatateMatrix(matrix) {
     return matrix;
 }
 
-let ans2 = roatateMatrix(matrix);
-console.log(`Rotate matrix is `, ans2);
+// let ans2 = roatateMatrix(matrix);
+// console.log(`Rotate matrix is `, ans2);
 
 //optimal approach(anticlockwise) -> logic= first transpose the matrix and then reverse the coulmn of the matrix
 //reverse column logic
-for (let i = 0; i < n; i++) {
-    let start = 0;
-    let end = n - 1;
-    while (start < end) {
-        // swap(matrix[start][i],matrix[end][i]);
-        let temp = matrix[start][i];
-        matrix[start][i] = matrix[end][i];
-        matrix[end][i] = temp;
-        start++;
-        end--;
+// for (let i = 0; i < n; i++) {
+//     let start = 0;
+//     let end = n - 1;
+//     while (start < end) {
+//         // swap(matrix[start][i],matrix[end][i]);
+//         let temp = matrix[start][i];
+//         matrix[start][i] = matrix[end][i];
+//         matrix[end][i] = temp;
+//         start++;
+//         end--;
+//     }
+// }
+
+
+//revision-1
+//brute -> time=O(2*n^2) and space=O(m^2)
+function rotateMatrix90(matrix, m) {
+    let newmatrix = [];
+    for (let i = 0; i < m; i++) {
+        let arr = [];
+        for (let j = 0; j < m; j++) {
+            arr.push(0);
+        }
+        newmatrix.push(arr);
+    }
+    console.log(newmatrix);
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < m; j++) {
+            newmatrix[j][m - 1 - i] = matrix[i][j];
+        }
+    }
+    return newmatrix;
+}
+// console.log("Rotate Matrix 90 degree -> ", rotateMatrix90(matrix, length));
+
+//optimal -> time=O(n/2*n/2)+O(n*n/2) and space=O(1)
+function rotate1Matrix90(matrix, n) {
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = i + 1; j < n; j++) {
+            let temp = matrix[i][j];
+            matrix[i][j] = matrix[j][i];
+            matrix[j][i] = temp;
+        }
+    }
+    for (let i = 0; i < n; i++) {
+        reverseRow(matrix[i]);
     }
 }
+rotate1Matrix90(matrix, length)
+console.log("Rotate Matrix 90 degree -> ", matrix);

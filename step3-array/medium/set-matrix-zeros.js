@@ -57,8 +57,8 @@ class BruteForce {
 }
 
 let obj = new BruteForce();
-// obj.setMatrixZeros(matrix);
-// console.log("Result matrix is ", matrix);
+obj.setMatrixZeros(matrix);
+console.log("Result matrix is ", matrix);
 
 
 //better -> time=O(2*n*m) and space=o(n)+O(m)
@@ -87,9 +87,9 @@ class Better {
     }
 }
 
-// let obj1 = new Better();
-// obj1.setMatrixZeros(matrix);
-// console.log("Result matrix is ", matrix);
+let obj1 = new Better();
+obj1.setMatrixZeros(matrix);
+console.log("Result matrix is ", matrix);
 
 //optimal approach -> time=O(2*m*n) and space=O(1)
 class Optimal {
@@ -138,3 +138,132 @@ class Optimal {
 let obj2 = new Optimal();
 obj2.setMatrixZeros(matrix);
 console.log("Result matrix is ", matrix);
+
+
+//revision-1
+//brute - time=O(m*n*(m+n))+O(n*m) and space=O(m*n)
+function deepCopyArray(arr) {
+    if (!Array.isArray(arr)) {
+        return arr; // If it's not an array, return the value as is
+    }
+
+    const copy = [];
+    for (let item of arr) {
+        copy.push(deepCopyArray(item)); // Recursively copy inner arrays or values
+    }
+    return copy;
+}
+
+function setZeros(arr, m, n) {
+    let newarr = deepCopyArray(arr);
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (arr[i][j] == 0) {
+                for (let k = 0; k < m; k++) {
+                    newarr[k][j] = 0;
+                }
+                for (let k = 0; k < n; k++) {
+                    newarr[i][k] = 0;
+                }
+            }
+        }
+    }
+    return newarr;
+}
+console.log("Result after setting zeros", setZeros(matrix, m, n));
+
+//brute -> time=O(n*m)+O(n+m) and space=O(1)
+function setRowZero(arr, i, n) {
+    for (let j = 0; j < n; j++) {
+        if (arr[i][j] != 0) {
+            arr[i][j] = -1;
+        }
+    }
+}
+function setColZero(arr, j, m) {
+    for (let i = 0; i < m; i++) {
+        if (arr[i][j] != 0) {
+            arr[i][j] = -1;
+        }
+    }
+}
+function setZeros1(arr, m, n) {
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (arr[i][j] == 0) {
+                setRowZero(arr, i, n);
+                setColZero(arr, j, m);
+                console.log(matrix);
+            }
+        }
+    }
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (arr[i][j] == -1) {
+                arr[i][j] = 0;
+            }
+        }
+    }
+}
+setZeros1(matrix, m, n);
+console.log("Result after setting zeros1", matrix);
+
+//better -> time=O(2*n*m) and space=O(m+n)
+function setZeros2(arr, m, n) {
+    let row = new Array(m).fill(0);
+    let col = new Array(n).fill(0);
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (arr[i][j] == 0) {
+                row[i] = 1;
+                col[j] = 1;
+            }
+        }
+    }
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (row[i] || col[j]) {
+                arr[i][j] = 0;
+            }
+        }
+    }
+}
+setZeros2(matrix, m, n);
+console.log("Result after setting zeros2", matrix);
+
+//optimal -> time=O(2*m*n) and space=O(1)
+function setZeros3(arr, m, n) {
+    let col1 = 1;
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (arr[i][j] == 0) {
+                if (j == 0) {
+                    col1 = 0;
+                    arr[i][0] = 0;
+                } else {
+                    arr[i][0] = 0;
+                    arr[0][j] = 0;
+                }
+            }
+        }
+    }
+    for (let i = 1; i < m; i++) {
+        for (let j = 1; j < n; j++) {
+            if (arr[i][0] == 0 || arr[0][j] == 0) {
+                arr[i][j] = 0;
+            }
+        }
+    }
+    for (let j = 1; j < n; j++) {
+        if (arr[0][0] == 0 || arr[0][j] == 0) {
+            arr[0][j] = 0;
+        }
+    }
+    for (let i = 0; i < m; i++) {
+        if (col1 == 0 || arr[i][0] == 0) {
+            arr[i][0] = 0;
+        }
+    }
+}
+setZeros3(matrix, m, n);
+console.log("Result after setting zeros3", matrix);

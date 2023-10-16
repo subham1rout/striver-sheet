@@ -126,5 +126,50 @@ function longestConsecutive1(arr, n) {
         return max;
     }
 }
-console.log("Longest Consecutive sequence", longestConsecutive(arr, length));
+console.log("Longest Consecutive sequence1", longestConsecutive1(arr, length));
 
+// better -> time=O(nlogn+n) and space=O(1)
+function longestConsecutive2(arr, n) {
+    arr = arr.sort((a, b) => a - b);
+    let max = 1;
+    let lastSmaller = Number.MIN_SAFE_INTEGER;
+    let ccount = 0;
+    for (let i = 0; i < n; i++) {
+        if (arr[i] - 1 == lastSmaller) {
+            ccount++;
+            lastSmaller = arr[i];
+        } else if (arr[i] !== lastSmaller) {
+            ccount = 1;
+            lastSmaller = arr[i];
+        }
+        if (ccount > max) {
+            max = ccount;
+        }
+    }
+    return max;
+}
+console.log("Longest Consecutive sequence2", longestConsecutive2(arr, length));
+
+//optimal -> O(3n+nlogn) and space=O(n)
+function longestConsecutive3(arr, n) {
+    let set = new Set();
+    let max = 0;
+    for (let i = 0; i < n; i++) {
+        set.add(arr[i]);
+    }
+    for (const value of set) {
+        if (set.has(value - 1) == false) {
+            let count = 1;
+            let temp = value;
+            while (set.has(temp + 1)) {
+                count++;
+                temp++;
+            }
+            if (count > max) {
+                max = count;
+            }
+        }
+    }
+    return max;
+}
+console.log("Longest Consecutive sequence3", longestConsecutive3(arr, length));
