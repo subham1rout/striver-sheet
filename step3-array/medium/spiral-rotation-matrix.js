@@ -48,6 +48,38 @@ function spiralRotationMatrix(matrix) {
     }
     return ans;
 }
+// console.log("Spiral print of the matrix is ", spiralRotationMatrix(matrix));
 
-let ans = spiralRotationMatrix(matrix);
-console.log("Spiral print of the matrix is ", ans);
+
+//revision-1
+function spiralRotation(matrix, m, n) {
+    let left = 0;
+    let top = 0;
+    let right = n - 1;
+    let bottom = m - 1;
+    let newarr = [];
+    while (left <= right && top <= bottom) {
+        for (let i = left; i <= right; i++) {
+            newarr.push(matrix[top][i]);
+        }
+        top++;
+        for (let i = top; i <= bottom; i++) {
+            newarr.push(matrix[i][right]);
+        }
+        right--;
+        if (top <= bottom) {
+            for (let i = right; i >= left; i--) {
+                newarr.push(matrix[bottom][i]);
+            }
+            bottom--;
+        }
+        if (left <= right) {
+            for (let i = bottom; i >= top; i--) {
+                newarr.push(matrix[i][left]);
+            }
+            left++;
+        }
+    }
+    return newarr;
+}
+console.log("After spiral rotation", spiralRotation(matrix, m, n));
