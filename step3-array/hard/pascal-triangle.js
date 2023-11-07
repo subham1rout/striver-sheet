@@ -15,7 +15,7 @@ function getValue(r, c) {
 console.log("Value =", getValue(row - 1, column - 1));
 
 
-//problem-2 -> get a particular row
+//problem-2 -> brute force -> get a particular row -> time=O(n*c) and space=O(n)
 let n = Number.parseInt(prompt("Enter the row you want to get of pascal's triangle: "));
 function getRow(n) {
     let arr = [];
@@ -25,3 +25,17 @@ function getRow(n) {
     return arr;
 }
 console.log("Row =", getRow(n));
+
+//problem-2 -> optimal -> time=O(n) and space=O(1) if we print otherwise O(n)
+function getRow1(n) {
+    let ans = 1;
+    let arr = [];
+    arr.push(ans);
+    for (let i = 1; i < n; i++) {
+        ans = ans * (n - i);
+        ans = Math.floor(ans / i);
+        arr.push(ans);
+    }
+    return arr;
+}
+console.log("Row1 =", getRow1(n));
