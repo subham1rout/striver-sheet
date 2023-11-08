@@ -39,3 +39,13 @@ function getRow1(n) {
     return arr;
 }
 console.log("Row1 =", getRow1(n));
+
+//problem-3 -> print entire pascal triangle -> time=O(n^2) and space=o(1)
+function printPascalTriangle(n) {
+    let ans = [];
+    for (let i = 1; i <= n; i++) {
+        ans.push(getRow1(i));
+    }
+    return ans;
+}
+console.log("Pascal Triangle =", printPascalTriangle(n));
