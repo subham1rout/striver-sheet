@@ -10,7 +10,7 @@ for (let i = 0; i < length; i++) {
 
 //brute -> time=O(nlogn)+O(2n) and space=o(n)
 function mergeSubinterval(arr, length) {
-    arr.sort((a, b) => a - b);
+    arr.sort((a, b) => a[0] - b[0]);
     let ans = [];
     for (let i = 0; i < length; i++) {
         let start = arr[i][0];
@@ -33,7 +33,7 @@ console.log("merge overlapping of subinterval1", mergeSubinterval(arr, length));
 
 //optimal ->  time=O(nlogn)+O(n) and space=O(n)
 function mergeSubinterval2(arr, length) {
-    arr.sort((a, b) => a - b);
+    arr.sort((a, b) => a[0] - b[0]);
     let ans = [];
     for (let i = 0; i < length; i++) {
         let anslen = ans.length;
