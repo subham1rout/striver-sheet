@@ -70,11 +70,10 @@ mergeArray1(arr1, arr2, length1, length2);
 console.log("Two Arrays after merging1 ->", arr1, arr2);
 
 
-//optimal2 -> shell sort technique -> time
+//optimal2 -> shell sort technique -> time=O((n+m)log(n+m)) and space=O(1)
 function mergeArray2(arr1, arr2, m, n) {
     let gap = Math.ceil((m + n) / 2);
     while (gap > 0) {
-        gap = Math.ceil(gap / 2);
         let left = 0;
         let right = left + gap;
         while (right < m + n) {
@@ -105,6 +104,7 @@ function mergeArray2(arr1, arr2, m, n) {
             }
         }
         if (gap == 1) break;
+        gap = Math.ceil(gap / 2);
     }
 }
 
