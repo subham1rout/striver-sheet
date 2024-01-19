@@ -16,18 +16,20 @@ function searchElement(arr, length, el) {
         if (arr[mid] == el) {
             return mid;
         }
-        if (arr[low] <= arr[mid]) {
+        if (arr[low] < arr[mid]) {
             if (arr[low] <= el && el <= arr[mid]) {
                 high = mid - 1;
             } else {
                 low = mid + 1;
             }
-        } else {
+        } else if (arr[mid] < arr[high]) {
             if (arr[mid] <= el && el <= arr[high]) {
                 low = mid + 1;
             } else {
                 high = mid - 1;
             }
+        } else {
+            low++;
         }
     }
     return -1;
