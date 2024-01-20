@@ -7,7 +7,7 @@ for (let i = 0; i < length; i++) {
 }
 const target = parseInt(prompt("enter target for the array:"));
 
-//time=O(logn) and space=O(1)
+//time=O(n/2) and space=O(1)
 function searchElement(arr, length, el) {
     let low = 0;
     let high = length - 1;
