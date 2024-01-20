@@ -14,7 +14,12 @@ function searchElement(arr, length, el) {
     while (low <= high) {
         let mid = Math.floor((low + high) / 2);
         if (arr[mid] == el) {
-            return mid;
+            return true;
+        }
+        if (arr[low] == arr[mid] && arr[mid] == arr[high]) {
+            low++;
+            high--;
+            continue;
         }
         if (arr[low] < arr[mid]) {
             if (arr[low] <= el && el <= arr[mid]) {
@@ -30,7 +35,7 @@ function searchElement(arr, length, el) {
             }
         }
     }
-    return -1;
+    return false;
 }
 
-console.log(`Element ${target} present in index ${searchElement(arr, length, target)}`);
+console.log(`Array contain duplicate having Element ${target} : ${searchElement(arr, length, target)}`);
