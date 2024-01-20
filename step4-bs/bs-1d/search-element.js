@@ -16,7 +16,7 @@ function searchElement(arr, length, el) {
         if (arr[mid] == el) {
             return mid;
         }
-        if (arr[low] < arr[mid]) {
+        if (arr[low] <= arr[mid]) {
             if (arr[low] <= el && el <= arr[mid]) {
                 high = mid - 1;
             } else {
