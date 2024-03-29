@@ -32,7 +32,19 @@ function getMissingPositiveNumber1(arr, n, k) {
 }
 console.log("Missing Number1 is ", getMissingPositiveNumber1(arr, length, k));
 
-//better
+//optimal -> time=O(n) and space=O(1)
 function getMissingPositiveNumber2(arr, n, k) {
-    
+    let low = 0;
+    let high = n - 1;
+    while (low <= high) {
+        let mid = Math.floor((low + high) / 2);
+        let missingNo = arr[mid] - mid - 1;
+        if (missingNo < k) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return high + k + 1; //low+k
 }
+console.log("Missing Number2 is ", getMissingPositiveNumber2(arr, length, k));
