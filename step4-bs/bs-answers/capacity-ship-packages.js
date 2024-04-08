@@ -7,7 +7,6 @@ for (let i = 0; i < length; i++) {
 }
 const days = parseInt(prompt("enter the no of days assigned for shipping:"));
 
-//brute ->time=O(sum-max+1)*O(n) and space=O(1) 
 function getMax(weights) {
     let max = weights[0];
     for (let i = 0; i < weights.length; i++) {
@@ -21,9 +20,9 @@ function getMax(weights) {
 function getSum(weights) {
     // let last = weights[weights.length - 1];
     // return Math.floor(last * (last + 1) / 2);
-    let sum=0;
-    for(let i=0;i<weights.length;i++){
-        sum+=weights[i];
+    let sum = 0;
+    for (let i = 0; i < weights.length; i++) {
+        sum += weights[i];
     }
     return sum;
 }
@@ -42,6 +41,7 @@ function getDays(weights, capacity) {
     return days;
 }
 
+//brute ->time=O(sum-max+1)*O(n) and space=O(1) 
 function getLeastCapacity(weights, days) {
     let max = getMax(weights);
     let sum = getSum(weights);
@@ -52,5 +52,21 @@ function getLeastCapacity(weights, days) {
         }
     }
 }
+console.log("Least capacity to ship packages = ", getLeastCapacity(weights, days));
 
-console.log("Least capacity to ship packages = ",getLeastCapacity(weights,days));
+//optimal -> time=O(log(sum-max))*O(n) and space=O(1)
+function getLeastCapacity2(weights, days) {
+    let low = getMax(weights);
+    let high = getSum(weights);
+    while (low <= high) {
+        let mid = Math.floor((low + high) / 2);
+        let daysTaken = getDays(weights, mid);
+        if (daysTaken <= days) {
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+    return low;
+}
+console.log("Least capacity to ship packages1 = ", getLeastCapacity2(weights, days));
