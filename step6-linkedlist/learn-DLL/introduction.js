@@ -16,9 +16,19 @@ class Node {
     }
 }
 
+function printDLL(head) {
+    let temp = head;
+    let string = '';
+    while (temp) {
+        string += temp.data + '->'
+        temp = temp.next;
+    }
+    return string;
+}
+
 // Array to DLL -> time=O(n) and space=O(1)
 function arrToDLL(arr) {
-    let head = new Node(arr[0]);
+    let head = new Node(arr[0], undefined, undefined);
     let prev = head;
     for (let i = 1; i < arr.length; i++) {
         let temp = new Node(arr[i], undefined, prev);
@@ -27,4 +37,5 @@ function arrToDLL(arr) {
     }
     return head;
 }
-console.log("Array to DLL -> ", arrToDLL(arr));
+let head = arrToDLL(arr);
+console.log("Array to DLL -> ", printDLL(head));
