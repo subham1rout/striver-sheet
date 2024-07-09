@@ -29,14 +29,14 @@ function arrToDLL(arr) {
 }
 let head = arrToDLL(arr);
 
-function printDLL(head){
-    let temp=head;
-    let DLL='';
-    while(temp.next){
-        DLL+=temp.data+'<->';
-        temp=temp.next;
+function printDLL(head) {
+    let temp = head;
+    let DLL = '';
+    while (temp) {
+        DLL += temp.data + '<->';
+        temp = temp.next;
     }
-    console.log(DLL);
+    return DLL;
 }
 
 //delete head of DLL -> time=O(1) and space=O(1)
@@ -44,55 +44,76 @@ function deleteHead(head) {
     if (head == undefined || head.next == undefined) {
         return undefined;
     }
-    let prev = head;
+    let temp = head;
     head = head.next;
     head.back = undefined;
-    prev.next = undefined;
+    temp.next = undefined;
     return head;
 }
 head = deleteHead(head);
 console.log("After deleting head DLL -> ", printDLL(head));
 
-//delete tail of DLL -> time=O(1) and space=O(1)
+//delete tail of DLL -> time=O(n) and space=O(1)
 function deleteTail(head) {
     if (head == undefined || head.next == undefined) {
         return undefined;
     }
-    let temp = head;
-    while (temp.next) {
-        temp = temp.next;
+    let tail = head;
+    while (tail.next) {
+        tail = tail.next;
     }
-    let prev = temp.back;
+    let prev = tail.back;
     prev.next = undefined;
-    temp.back = undefined;
+    tail.back = undefined;
     return head;
 }
 head = deleteTail(head);
 console.log("After deleting tail of DLL -> ", printDLL(head));
 
-//delete nth node of DLL -> time=O(1) and space=O(1)
-function deleteNthNode(head, n) {
-    printDLL(head)
-    if (head == undefined || head.next == undefined) {
-        return undefined;
-    }
-    let count = 0;
+//delete nth node of DLL -> time=O(n) and space=O(1)
+function deleteKthNode(head, k) {
     let temp = head;
-    while (temp.next) {
+    let count = 0;
+    while (temp) {
         count++;
-        if (count == n) {
-            let prev = temp.back;
-            let rear = temp.next;
-            prev.next = rear;
-            rear.back = prev;
-            temp.next = undefined;
-            rear.back = undefined;
-            break;
+        if (k == count) break;
+        temp = temp.next;
+    }
+    let prevNode = temp.back;
+    let nextNode = temp.next;
+    if (prevNode == undefined && nextNode == undefined) {
+        return undefined;
+    } else if (prevNode == undefined) {
+        return deleteHead(head);
+    } else if (nextNode == undefined) {
+        return deleteTail(head);
+    }
+    prevNode.next = nextNode;
+    nextNode.back = prevNode;
+    temp.next = undefined;
+    temp.back = undefined;
+    return head;
+}
+const k = parseInt(prompt("enter which no node you want to delete="));
+head = deleteKthNode(head, k);
+console.log("After deleting kth Node of DLL -> ", printDLL(head));
+
+
+
+function sumOfLastN_Nodes(head, n) {
+    let temp = head;
+    let value;
+    while (value) {
+        for (let i = 0; i < n; i++) {
+            value = temp.next;
         }
         temp = temp.next;
     }
-    return head;
+    let sum = 0;
+    while (temp) {
+        sum += temp.data;
+        temp = temp.next;
+    }
+    return sum;
 }
-const n = parseInt(prompt("enter nth value="));
-head = deleteNthNode(head, n);
-console.log("After deleting nth Node of DLL -> ", printDLL(head));
+// sumOfLastN_Nodes(head, 3);
