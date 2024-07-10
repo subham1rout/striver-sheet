@@ -99,21 +99,20 @@ head = deleteKthNode(head, k);
 console.log("After deleting kth Node of DLL -> ", printDLL(head));
 
 
-
-function sumOfLastN_Nodes(head, n) {
-    let temp = head;
-    let value;
-    while (value) {
-        for (let i = 0; i < n; i++) {
-            value = temp.next;
-        }
-        temp = temp.next;
+//delete a node from DLL
+function deleteNode(node) {
+    let prevNode = node.back;
+    let nextNode = node.next;
+    if (nextNode == undefined) {
+        prevNode.next = undefined;
+        node.back = undefined;
+        return head;
     }
-    let sum = 0;
-    while (temp) {
-        sum += temp.data;
-        temp = temp.next;
-    }
-    return sum;
+    prevNode.next = nextNode;
+    nextNode.back = prevNode;
+    node.next = undefined;
+    node.back = undefined;
+    return head;
 }
-// sumOfLastN_Nodes(head, 3);
+head = deleteNode(head.next.next);
+console.log("After deleting kth Node of DLL -> ", printDLL(head));
