@@ -51,4 +51,23 @@ function insertInHead(head, data) {
 }
 let data = parseInt(prompt('enter data to insert:'));
 head = insertInHead(head, data);
-console.log("After deleting head DLL -> ", printDLL(head));
+console.log("After inserting in head of DLL -> ", printDLL(head));
+
+//insert at Tail
+function insertInTail(head, data) {
+    if (head == undefined) {
+        return undefined;
+    }
+    let temp = head.next;
+    while (temp.next != undefined) {
+        temp = temp.next;
+    }
+    let prev = temp.back;
+    let newNode = new Node(data, temp, prev);
+    prev.next = newNode;
+    temp.back = newNode;
+    return head;
+}
+let data1 = parseInt(prompt('enter data to insert:'));
+head = insertInTail(head, data1);
+console.log("After inserting in tail of DLL -> ", printDLL(head));
