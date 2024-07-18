@@ -29,6 +29,7 @@ function arrToDLL(arr) {
 }
 let head = arrToDLL(arr);
 
+//print DLL
 function printDLL(head) {
     let temp = head;
     let DLL = '';
@@ -39,8 +40,8 @@ function printDLL(head) {
     return DLL;
 }
 
-//insert in head
-function insertInHead(head, data) {
+//insert Before head -> time=O(1) and space=O(1)
+function insertBeforeHead(head, data) {
     if (head == undefined) {
         return undefined;
     }
@@ -50,11 +51,11 @@ function insertInHead(head, data) {
     return newHead;
 }
 let data = parseInt(prompt('enter data to insert:'));
-head = insertInHead(head, data);
+head = insertBeforeHead(head, data);
 console.log("After inserting in head of DLL -> ", printDLL(head));
 
-//insert at Tail
-function insertInTail(head, data) {
+//insert Before Tail -> time=O(n) and space=O(1)
+function insertBeforeTail(head, data) {
     if (head == undefined) {
         return undefined;
     }
@@ -69,5 +70,42 @@ function insertInTail(head, data) {
     return head;
 }
 let data1 = parseInt(prompt('enter data to insert:'));
-head = insertInTail(head, data1);
+head = insertBeforeTail(head, data1);
 console.log("After inserting in tail of DLL -> ", printDLL(head));
+
+//insert Before Kth Node of DLL -> time=O(n) and space=O(1)
+function insertBeforeKthNode(head, data, k) {
+    if (head == undefined) return undefined;
+    if (k == 1) {
+        return insertBeforeHead(head, data);
+    }
+    let temp = head;
+    let count = 0;
+    while (temp.next != undefined) {
+        count++;
+        if (count == k) {
+            break;
+        }
+        temp = temp.next;
+    }
+    let prev = temp.back;
+    let newNode = new Node(data, temp, prev);
+    prev.next = newNode;
+    temp.back = newNode;
+    return head;
+}
+let data2 = parseInt(prompt('enter data to insert:'));
+let k = parseInt(prompt('enter kth postion to insert:'));
+head = insertBeforeKthNode(head, data2, k);
+console.log("After inserting in kth Node of DLL -> ", printDLL(head));
+
+//insert Before a Node of DLL -> time=O(1) and space=O(1)
+function insertBeforeNode(node, value) {
+    let prevNode = node.back;
+    let newNode = new Node(value, node, prevNode);
+    prevNode.next = newNode;
+    node.back = newNode;
+}
+let data3 = parseInt(prompt('enter data to insert:'));
+insertBeforeNode(head.next, data3);
+console.log("After inserting Before a Node of DLL -> ", printDLL(head));
