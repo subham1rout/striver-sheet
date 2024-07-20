@@ -56,7 +56,7 @@ class Stack {
     }
 }
 
-//reverse
+//brute -> time=O(2n) and space=O(n)
 function reverse(head) {
     let newstack = new Stack();
     let temp = head;
@@ -73,4 +73,20 @@ function reverse(head) {
     return head;
 }
 head = reverse(head);
+console.log("Reverse DLL = ", printDLL(head));
+
+//optimal -> time=O(n) and space=O(1)
+function reverse1(head) {
+    let current = head;
+    let temp = undefined;
+    while (current) {
+        temp = current.back;
+        current.back = current.next;
+        current.next = temp;
+        current = current.back;
+    }
+    head = temp.back;
+    return head;
+}
+head = reverse1(head);
 console.log("Reverse DLL = ", printDLL(head));
