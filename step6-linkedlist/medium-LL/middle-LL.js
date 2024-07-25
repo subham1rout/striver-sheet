@@ -33,14 +33,14 @@ function printLL(head) {
     let string = '';
     while (temp) {
         string += temp.data + ' -> ';
-        temp=temp.next;
+        temp = temp.next;
     }
     return string;
 }
 console.log("Given LL ->", printLL(head));
 
-//brute
-function middleLL(head) {
+//brute -> time=O(2n) and space=O(1)
+function findMiddleLL(head) {
     let temp = head;
     let count = 0;
     while (temp) {
@@ -59,4 +59,16 @@ function middleLL(head) {
     }
     return temp.data;
 }
-console.log("Middle of LL = ", middleLL(head));
+console.log("Middle of LL = ", findMiddleLL(head));
+
+//TortoiseHare Method -> time=O(n/2) and space=O(1)
+function findMiddleLL1(head) {
+    let slow = head;
+    let fast = head;
+    while (fast != undefined && fast.next != undefined) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow.data;
+}
+console.log("Middle of LL 1 = ", findMiddleLL1(head));
