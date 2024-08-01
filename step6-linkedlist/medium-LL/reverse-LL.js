@@ -68,7 +68,7 @@ head = reverseLL(head);
 console.log("Reverse LL ->", printLL(head));
 
 
-//optimal
+//optimal -> time=O(n) and space=O(1)
 function reverseLL1(head) {
     let temp = head;
     let prev = undefined;
