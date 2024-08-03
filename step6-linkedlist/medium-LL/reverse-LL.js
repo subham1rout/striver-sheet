@@ -50,6 +50,9 @@ class Stack {
         return this.items.pop();
     }
 }
+
+
+//recursive approach -> time=O(n) and space=O(1)
 function reverseLL(head) {
     let temp = head;
     let newstack = new Stack();
@@ -82,3 +85,18 @@ function reverseLL1(head) {
 }
 head = reverseLL1(head);
 console.log("Reverse LL 1->", printLL(head));
+
+
+//recursive approach
+function reverseLLRecursive(head) {
+    if (head == undefined || head.next == undefined) {
+        return head;
+    }
+    let newhead = reverseLLRecursive(head.next);
+    let temp = head.next;
+    temp.next = head;
+    head.next = undefined;
+    return newhead;
+}
+head = reverseLLRecursive(head);
+console.log("Reverse LL Recursive->", printLL(head));
