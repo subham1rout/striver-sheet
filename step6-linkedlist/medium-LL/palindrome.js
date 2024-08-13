@@ -54,3 +54,38 @@ function checkPalindrome(head) {
     return true;
 }
 console.log("Palindrom Check -> ", checkPalindrome(head));
+
+
+//optimal -> tortoise and hare algorithm -> time=O(2n) and space=O(1)
+function reverse(head) {
+    let temp = head;
+    let prev = undefined;
+    while (temp) {
+        let front = temp.next;
+        temp.next = prev;
+        prev = temp;
+        temp = front;
+    }
+    return prev;
+}
+function checkPalindrome1(head) {
+    if (head == undefined || head.next == undefined) return head;
+    let slow = head;
+    let fast = head;
+    while (fast.next && fast.next.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    let newhead = reverse(slow.next);
+    let temp = head;
+    let temp1 = newhead;
+    while (temp1) {
+        if (temp.data !== temp1.data) {
+            return false;
+        }
+        temp = temp.next;
+        temp1 = temp1.next;
+    }
+    return true;
+}
+console.log("Palindrom1 Check -> ", checkPalindrome1(head));
