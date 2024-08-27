@@ -68,3 +68,21 @@ function segregateLL(head) {
 }
 head = segregateLL(head);
 console.log("Result LL ->", printLL(head));
+
+
+//segregate even and odd index of LL -> time=O(n) and space=O(1)
+function segregateLL2(head) {
+    let odd = head;
+    let even = head.next;
+    let evenHead = head.next;
+    while (even && even.next) {
+        odd.next = odd.next.next;
+        even.next = even.next.next;
+        odd = odd.next;
+        even = even.next;
+    }
+    odd.next = evenHead;
+    return head;
+}
+head = segregateLL2(head);
+console.log("Result LL ->", printLL(head));
