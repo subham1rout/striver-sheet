@@ -39,8 +39,9 @@ function printLL(head) {
 }
 console.log("Given LL ->", printLL(head));
 
-//segregate odd and even
+//segregate on basis of odd and even node data -> GFG brute -> time=O(2n) and space=o(2n)
 function segregateLL(head) {
+    if (head == null || head.next == null) return head;
     let temp = head;
     let even = [];
     let odd = [];
@@ -70,8 +71,39 @@ head = segregateLL(head);
 console.log("Result LL ->", printLL(head));
 
 
-//segregate even and odd index of LL -> time=O(n) and space=O(1)
+//segregate even and odd index of LL -> Leetcode brute -> time=O(2n) and space=O(n)
+function segregateLL1(head) {
+    if (head == null || head.next == null) {
+        return head;
+    }
+    let arr = [];
+    let temp = head;
+    while (temp && temp.next) {
+        arr.push(temp.data);
+        temp = temp.next.next;
+    }
+    if (temp) arr.push(temp.data);
+    temp = head.next;
+    while (temp && temp.next) {
+        arr.push(temp.data);
+        temp = temp.next.next;
+    }
+    if (temp) arr.push(temp.data);
+    temp = head;
+    let i = 0;
+    while (temp) {
+        temp.data = arr[i];
+        i++;
+        temp = temp.next;
+    }
+    return head;
+}
+head = segregateLL1(head);
+console.log("Result LL ->", printLL(head));
+
+//segregate even and odd index of LL -> Leetcode optimal -> time=O(n) and space=O(1)
 function segregateLL2(head) {
+    if (head == null || head.next == null) return head;
     let odd = head;
     let even = head.next;
     let evenHead = head.next;
