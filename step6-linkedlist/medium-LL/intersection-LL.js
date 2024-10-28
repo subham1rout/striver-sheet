@@ -51,7 +51,7 @@ function printLL(head) {
     console.log(string);
 }
 
-//brute force 
+//brute force -> time=O(n1logn1+n2logn2) and space=O(n1)
 function intersectingLL(head, head2) {
     let map = new Map();
     let temp = head;
@@ -69,3 +69,52 @@ function intersectingLL(head, head2) {
     return null;
 }
 console.log("intersection point of 2 LL -> ", intersectingLL(head, head2));
+
+//better time=O(n1+n2+n2-n1+n1)=O(n1+2n2) and space=O(1)
+function getConcatPoint(h1, h2, d) {
+    while (d) {
+        h2 = h2.next;
+        d--;
+    }
+    while (h1 != h2) {
+        h1 = h1.next;
+        h2 = h2.next;
+    }
+    return h1;
+}
+function intersectingLL2(head, head2) {
+    let temp1 = head;
+    let temp2 = head2;
+    let length1 = 0;
+    let length2 = 0;
+    while (temp1) {
+        length1++;
+        temp1 = temp1.next;
+    }
+    while (temp2) {
+        length2++;
+        temp2 = temp2.next;
+    }
+    if (length1 < length2) {
+        return getConcatPoint(head, head2, length2 - length1);
+    } else {
+        return getConcatPoint(head2, head, length1 - length2);
+    }
+}
+console.log("intersection point of 2 LL1 -> ", intersectingLL2(head, head2));
+
+//optimal -> time=O(n1+n2) and space=O(1)
+function intersectingLL3(head, head2) {
+    if (head == null || head2 == null) return null;
+    let temp1 = head;
+    let temp2 = head2;
+    while (temp1 != temp2) {
+        temp1 = temp1.next;
+        temp2 = temp2.next;
+        if (temp1 == temp2) return temp1;
+        if (temp1 == null) temp1 = head2;
+        if (temp2 == null) temp2 = head;
+    }
+    return temp1;
+}
+console.log("intersection point of 2 LL2 -> ", intersectingLL3(head, head2));

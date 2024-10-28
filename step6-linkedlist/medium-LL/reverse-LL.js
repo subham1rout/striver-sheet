@@ -15,7 +15,7 @@ class Node {
     }
 }
 
-//construct DLL
+//construct LL
 function arrToLL(arr) {
     let head = new Node(arr[0]);
     let prev = head;
@@ -38,7 +38,7 @@ function printLL(head) {
     return DLL;
 }
 
-//reverse LL -> time=O(2n) and space=O(n)
+//reverse LL
 class Stack {
     constructor() {
         this.items = [];
