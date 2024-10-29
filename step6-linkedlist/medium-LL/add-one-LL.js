@@ -43,6 +43,7 @@ function printLL(head) {
     }
     return LL;
 }
+
 //reverse LL
 function reverseLL(head) {
     let prev = null;
